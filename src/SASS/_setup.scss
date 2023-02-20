@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+$fill-color: rgb(13, 2, 22);
+$titlefont: 'Ranchers';
+$basefont: 'Raleway';
+
 // $bgc:#fdf8e5;
 // $color:hotpink;
 // $basefont:'Roboto';
+
 
 @mixin desktop {
     @media (min-width:576px) {

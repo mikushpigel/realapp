@@ -5,7 +5,10 @@ const DeskNavbar = () => {
   const [isScroll, setScroll] = useState(0);
 
   const styles = {
-    backgroundColor: isScroll > 0 ? "rgb(203, 178, 231)" : "",
+    background:
+      isScroll > 0
+        ? "linear-gradient(to right bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7))"
+        : "",
     padding: isScroll > 0 ? "10px 100px" : "40px 100px",
   };
 
@@ -21,11 +24,11 @@ const DeskNavbar = () => {
         className={isScroll > 0 ? "desk-nav sticky" : "desk-nav"}
         style={styles}
       >
-        <NavLink className={"d-logo a-link"} to="/">
+        <NavLink className={"a-link"} to="/">
           <img
             src={require("../images/coook.png")}
             alt="logo"
-            className="logo-b"
+            className="logo-cook"
           />
         </NavLink>
         <ul className="desk-nav-ul">
@@ -84,7 +87,6 @@ const DeskNavbar = () => {
           </li>
         </ul>
       </div>
-      <section className="banner"></section>
     </>
   );
 };

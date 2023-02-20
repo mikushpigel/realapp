@@ -1,8 +1,3 @@
-.logo-b {
-    height: 10vh;
-    filter: grayscale(0.3);
-}
-
 .desk-nav {
     position: fixed;
     z-index: 800;
@@ -14,10 +9,9 @@
     align-items: center;
     transition: 0.6s;
 
-    .d-logo {
-        position: relative;
-        text-decoration: none;
-        transition: 0.6s;
+    .logo-cook {
+        height: 9vh;
+        filter: grayscale(0.7);
     }
 
     .desk-nav-ul {
@@ -38,42 +32,32 @@
                 color: rgb(240, 222, 222);
                 letter-spacing: 1px;
                 transition: 0.7s;
-                font-family: "Raleway";
-                font-size: 1.5rem;
-
+                font: 700 1.5rem Raleway;
             }
         }
     }
 }
 
-.link-item {
-    --fill-color: #d380e3;
+.desk-nav ul li .link-item {
     position: relative;
     display: block;
     margin: 0 15px;
     font: 700 1.8rem Raleway;
     text-decoration: none;
-    /* text-transform: lowercase; */
-    -webkit-text-stroke: 2px var(--fill-color);
-    background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+    -webkit-text-stroke: 2px $fill-color;
+    background: linear-gradient($fill-color 0 100%) left / 0 no-repeat;
     color: transparent;
     background-clip: text;
     transition: 0.5s linear;
-}
 
-.link-item:hover {
-    background-size: 100%;
+    &:hover {
+        background-size: 100%;
+    }
 }
 
 .desk-nav.sticky ul li .a-link {
-    color: #000;
+    color: $fill-color;
 }
-
-.banner {
-    position: relative;
-    width: 100%;
-}
-
 
 @include mobile {
     .desk-nav {

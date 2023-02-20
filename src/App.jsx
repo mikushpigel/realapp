@@ -10,6 +10,8 @@ import SignIn from "./components/Sign-in";
 import SignUp from "./components/Sign-up";
 import Hamburger from "./components/Hamburger";
 import DeskNavbar from "./components/DeskNavbar";
+import Index from "./components/Index";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,7 +23,8 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="index" element={<Index />} />
+          <Route path="/" element={<Index />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="recipes" element={<Recipes />} />
           <Route path="quick-and-easy" element={<QuickandEasy />} />
@@ -30,6 +33,9 @@ function App() {
           <Route path="sign-up" element={<SignUp />} />
         </Routes>
       </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

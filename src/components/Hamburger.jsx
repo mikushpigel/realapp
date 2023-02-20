@@ -16,7 +16,7 @@ const Hamburger = () => {
 
   return (
     <>
-      <div id="webapp_cover">
+      <div id="humburger_wrapper">
         <div id="menu_button">
           <input type="checkbox" id="menu_checkbox" />
           <label htmlFor="menu_checkbox" id="menu_label" onClick={handleClick}>

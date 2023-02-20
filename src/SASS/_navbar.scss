@@ -1,18 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #1a1e23;
-}
+// body {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+//   background-color: rgb(237, 125, 237);
+// }
 
 ul.navbar-ul {
   display: flex;
   gap: 15px;
   list-style-type: none;
   display: none;
+
 }
 
 li.navbar-li {
@@ -20,15 +21,14 @@ li.navbar-li {
 }
 
 li.navbar-li .link-item {
-  --fill-color: #d380e3;
   position: relative;
   display: block;
   padding: 4px 0;
   font: 700 3rem Raleway;
   text-decoration: none;
   /* text-transform: lowercase; */
-  -webkit-text-stroke: 2px var(--fill-color);
-  background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+  -webkit-text-stroke: 2px $fill-color;
+  background: linear-gradient($fill-color 0 100%) left / 0 no-repeat;
   color: transparent;
   background-clip: text;
   transition: 0.5s linear;
@@ -39,14 +39,6 @@ li.navbar-li .link-item:hover {
 }
 
 @include mobile {
-  body {
-    display: flex;
-    -ms-flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-  }
-
   ul.navbar-ul {
     display: flex;
     flex-direction: column;
@@ -56,13 +48,13 @@ li.navbar-li .link-item:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: rgb(237, 125, 237);
   }
 
-  li.navbar-li {
+  .link-item {
     display: flex;
     justify-content: flex-start;
     padding: 0;
-
   }
 
   li.navbar-li .link-item {

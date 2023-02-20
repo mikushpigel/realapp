@@ -321,25 +321,6 @@ const Home = () => {
         {" "}
         <img src="../img/img15.jpg" alt="" class="girl" />
       </div>
-      <a href="https://twitter.com/hashtag/mardigras2022" target="_blank">
-        <i class="fab fa-twitter fa-3x"></i>
-      </a>
-      <a href="https://www.facebook.com/MardiGras.nola" target="_blank">
-        <i class="fab fa-facebook fa-3x"></i>
-      </a>
-      <a href="https://github.com" target="_blank">
-        <i class="fab fa-github fa-3x"></i>
-      </a>
-      <a
-        href="https://www.instagram.com/explore/tags/mardigras"
-        target="_blank"
-      >
-        <i class="fab fa-linkedin fa-3x"></i>
-      </a>
-      <p>
-        {" "}
-        <span>&copy;</span> 2022 Shpigel Rotem Project Html Css JS{" "}
-      </p>
     </>
   );
 };
