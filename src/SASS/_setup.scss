@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// $bgc:#fdf8e5;
+// $color:hotpink;
+// $basefont:'Roboto';
+
+@mixin desktop {
+    @media (min-width:576px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width:575px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width:1400px) {
+        @content;
+    }
+}
