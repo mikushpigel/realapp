@@ -16,7 +16,7 @@ const DeskNavbar = () => {
     window.addEventListener("scroll", (e) => {
       setScroll(e.currentTarget.scrollY);
     });
-  }, [isScroll]);
+  }, []);
 
   return (
     <>

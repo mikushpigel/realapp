@@ -1,0 +1,11 @@
+@local=http://localhost:3001
+
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name": "radaa",
+    "email": "a@111d1agmail.com",
+    "password": "111111",
+    "biz": true   
+}

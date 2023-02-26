@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="footer-app border-top pt-3 py-2">
       <span>Yammy recipes</span>
       <span className="mx-2">
-        <i class="bi bi-c-circle"></i>
+        <i className="bi bi-c-circle"></i>
         &nbsp; Rotem Shpigel
       </span>
       <span>{new Date().getFullYear()}</span>

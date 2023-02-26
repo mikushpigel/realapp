@@ -1,0 +1,52 @@
+.wrapper-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.missing-ingredients-div {
+    display: flex;
+    justify-content: center;
+
+}
+
+.missedIngredientDiv {}
+
+.card-recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    // background-color: plum;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+
+.wrapper-missing-ingredient {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wrapper-btn {
+    padding: 25px;
+}
+
+.btn-full-recipe {
+    border: 3px solid purple;
+    background-color: rgb(228, 135, 225);
+    padding: 10px 5px;
+    border-radius: 8px;
+}

@@ -27,7 +27,7 @@ const NavBar = ({ onActive }) => {
       </li>
       <li className="navbar-li">
         <NavLink onClick={handleClick} className={"link-item"} to="recipes">
-          | RECIPES |
+          | SEARCH |
         </NavLink>
       </li>
       <li className="navbar-li">

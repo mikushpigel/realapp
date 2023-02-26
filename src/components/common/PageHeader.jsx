@@ -4,7 +4,7 @@ const PageHeader = ({ title, description }) => {
       <div className="page-header">
         <div>
           <img
-            src={require("../images/cook_icon.png")}
+            src={require("../../images/cook_icon.png")}
             style={{ width: "48px" }}
             className="cook-icon"
             alt=""
@@ -13,13 +13,12 @@ const PageHeader = ({ title, description }) => {
         </div>
       </div>
       {description && (
-        <div className="page-header">
+        <div className="div-description">
           <div>
             <p>{description}</p>
           </div>
         </div>
       )}
-      ;
     </>
   );
 };
