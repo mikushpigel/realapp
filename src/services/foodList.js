@@ -2,7 +2,7 @@ const foodList = [
   "asparagus",
   "apples",
   "cabbage",
-  "avacado",
+  "avocado",
   "alfalfa",
   "almond",
   "arugala",

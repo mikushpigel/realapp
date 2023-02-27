@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import foodList from "../services/foodList";
 import PageHeader from "./common/PageHeader";
-import Select from "react-select";
-import { getRecipeByIngridient } from "../services/getRecipeByIngredient";
 import CardRecipe from "./common/CardRecipe";
+import recipeService from "../services/recipeApiServices";
 
-const Recipes = () => {
+const SearchByIngredient = () => {
   const [search, setInput] = useState("");
   const [productsList, setProductsList] = useState(foodList);
   const [choosenProducts, setChoosenProduct] = useState([]);
@@ -14,7 +13,10 @@ const Recipes = () => {
   const [error, setError] = useState("");
 
   //   const matchsProduct = productsList.filter((prod) => prod.includes(search));
-  const onViewFullRecipe = (id) => {};
+  //   const onViewFullRecipe = async (id) => {
+  //     const fullRecipe = await getRecipeInfoById(id);
+  //     console.log(fullRecipe);
+  //   };
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -86,11 +88,11 @@ const Recipes = () => {
       {choosenProducts.length && (
         <CardRecipe
           recipe={choosenProducts}
-          onViewFullRecipe={onViewFullRecipe}
+          //   onViewFullRecipe={onViewFullRecipe}
         />
       )}
     </>
   );
 };
 
-export default Recipes;
+export default SearchByIngredient;

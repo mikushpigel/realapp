@@ -1,6 +1,5 @@
-import { Toast } from "bootstrap";
 import { useEffect, useState } from "react";
-import recipesService from "../services/getRecipeByIngredient";
+import recipesService from "../services/recipeApiServices";
 
 export const useRecipeByIngredient = (ingredients) => {
   const [matchingRecipe, setMetchingRecipe] = useState(null);
@@ -14,7 +13,7 @@ export const useRecipeByIngredient = (ingredients) => {
     if (!ingredients) return;
     getRecipeByIngridient();
   }, [ingredients]);
-
+  //   console.log(matchingRecipe);
   return matchingRecipe;
 };
 

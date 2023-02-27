@@ -26,7 +26,11 @@ const NavBar = ({ onActive }) => {
         </NavLink>
       </li>
       <li className="navbar-li">
-        <NavLink onClick={handleClick} className={"link-item"} to="recipes">
+        <NavLink
+          onClick={handleClick}
+          className={"link-item"}
+          to="search-by-ingredient"
+        >
           | SEARCH |
         </NavLink>
       </li>
