@@ -50,3 +50,18 @@
     padding: 10px 5px;
     border-radius: 8px;
 }
+
+.input-search-recipe {
+    border: 3px solid purple;
+    border-radius: 8px;
+    padding: 7px;
+    width: 50vw;
+}
+
+.wrapper-search-reacipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import recipesService from "../services/recipeApiServices";
 
 export const useRecipeByIngredient = (ingredients) => {
+  console.log("userecipebyIngredient");
   const [matchingRecipe, setMetchingRecipe] = useState(null);
   const toApi = ingredients.join(",+");
-  console.log(toApi);
+
   useEffect(() => {
     const getRecipeByIngridient = async () => {
+      console.log("userecipebyIngredient- useeffect");
       setMetchingRecipe(await recipesService.getRecipeByIngridient(toApi));
     };
 

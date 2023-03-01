@@ -1,0 +1,49 @@
+.divInfo {
+    width: 100%;
+    height: max-content;
+    background-color: rgb(126, 69, 241);
+    padding: 25px 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.div-img {
+    width: 500px;
+    height: max-content;
+    border-radius: 50%;
+}
+
+.img-popup {
+    width: 100%;
+
+    border-radius: 50%;
+}
+
+.nutrients-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nutrients-div {
+    display: flex;
+
+}
+
+.close-full-recipe {
+    border: 3px solid purple;
+    background-color: rgb(228, 135, 225);
+    padding: 10px 5px;
+    border-radius: 8px;
+    width: 80px;
+}
+
+@include mobile {
+    .div-img {
+        width: 90vw;
+    }
+}

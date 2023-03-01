@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import recipesService from "../services/recipeApiServices";
 
 export const useRecipeInfoById = (id) => {
-  const [isClicked, setClick] = useState(false);
   const [fullRecipe, setFullRecipe] = useState(null);
 
   useEffect(() => {
@@ -12,7 +11,7 @@ export const useRecipeInfoById = (id) => {
     if (!id) return;
     getRecipeInfoById();
   }, [id]);
-
+  console.log(fullRecipe);
   return fullRecipe;
 };
 
