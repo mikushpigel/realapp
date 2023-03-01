@@ -35,6 +35,7 @@ export function getUserDetails() {
     return null;
   }
 }
+console.log(getUserDetails());
 
 const userService = {
   createUser,

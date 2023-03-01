@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { getUserDetails } from "../services/userService";
 
 const DeskNavbar = () => {
   const [isScroll, setScroll] = useState(0);

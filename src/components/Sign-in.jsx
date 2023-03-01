@@ -27,7 +27,7 @@ const SignIn = () => {
       try {
         await conectUser(values);
         navigate("/");
-        getJWT();
+        // getJWT();
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);

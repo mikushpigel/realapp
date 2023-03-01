@@ -14,6 +14,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow }) => {
   } = recipe;
 
   // const [popUp,setPopUp] = useState({id,isOpen:false,isClose:true})
+
   return (
     <div className="divInfo">
       <h1>{title}</h1>
@@ -27,8 +28,8 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow }) => {
       </div>
 
       <div className="instruction-step">
-        {instructions.steps.map(({ number, step }) => (
-          <li>
+        {instructions.steps.map(({ number, step }, index) => (
+          <li key={index}>
             {number}. {step}
           </li>
         ))}
