@@ -1,25 +1,28 @@
-import { useFormik } from "formik";
-import formikvalidatUsingJoi from "../utils/formikValidationUsingJoi";
-import Input from "./common/Input";
-import Joi from "joi";
-import PageHeader from "./common/PageHeader";
 import { useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth.context";
+import Input from "./Input";
+import PageHeader from "./PageHeader";
+import { useFormik } from "formik";
+import Joi from "joi";
+import formikvalidatUsingJoi from "../../utils/formikValidationUsingJoi";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth.context";
+import { toast } from "react-toastify";
 
-const SignIn = () => {
+const SignUpForm = ({ isBiz, redirect, type = "", description }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { login, user } = useAuth();
+  const { createUser } = useAuth();
 
   const formik = useFormik({
     validateOnMount: true,
     initialValues: {
+      name: "",
       email: "",
       password: "",
     },
     validate: formikvalidatUsingJoi({
+      name: Joi.string().min(2).max(42).required(),
       email: Joi.string()
         .email({ tlds: { allow: false } })
         .required(),
@@ -27,9 +30,18 @@ const SignIn = () => {
     }),
     async onSubmit(values) {
       try {
-        await login(values);
-        navigate("/");
-        // getJWT();
+        await createUser({ ...values, biz: isBiz });
+        toast("your account is ready", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        navigate(redirect);
       } catch ({ response }) {
         if (response && response.status === 400) {
           setError(response.data);
@@ -37,53 +49,49 @@ const SignIn = () => {
       }
     },
   });
-
-  if (user) {
-    return <Navigate to="/" />;
-  }
   return (
     <>
       <PageHeader
-        title={"Sign In With Yammy Recipes"}
-        description={"A few steps and you will be connected"}
+        title={`Sign Up ${type} with Yammy Recipes`}
+        description={description}
       />
+
       <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
         {error && <div className="alert alert-danger">{error}</div>}
         <Input
+          {...formik.getFieldProps("name")}
+          label="Your Name"
+          type="name"
+          required
+          error={formik.touched.name && formik.errors.name}
+        />
+        <Input
           {...formik.getFieldProps("email")}
-          label="email"
+          label="Email"
           type="email"
           required
           error={formik.touched.email && formik.errors.email}
         />
         <Input
           {...formik.getFieldProps("password")}
-          label="password"
+          label="Password"
           type="password"
           required
           error={formik.touched.password && formik.errors.password}
         />
+
         <div className="my-2">
           <button
             type="submit"
             disabled={!formik.isValid}
             className="btn btn-primary"
           >
-            Sign In
+            Sign Up {type}
           </button>
         </div>
       </form>
-      <div className="d-flex flex-column">
-        <p>Don't have an account?</p>
-        <NavLink to="/sign-up"> SIGN UP </NavLink>
-        <NavLink to="/sign-up-premium"> SIGN UP PREMIUM </NavLink>
-      </div>
-      <div>
-        <h2>forget your password?</h2>
-        <NavLink to="/password-recovery">click here</NavLink>
-      </div>
     </>
   );
 };
 
-export default SignIn;
+export default SignUpForm;

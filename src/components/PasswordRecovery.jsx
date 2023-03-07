@@ -1,34 +1,28 @@
-import { useFormik } from "formik";
-import formikvalidatUsingJoi from "../utils/formikValidationUsingJoi";
-import Input from "./common/Input";
-import Joi from "joi";
-import PageHeader from "./common/PageHeader";
 import { useState } from "react";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import Input from "./common/Input";
+import { useFormik } from "formik";
+import Joi from "joi";
+import formikvalidatUsingJoi from "../utils/formikValidationUsingJoi";
+import PageHeader from "./common/PageHeader";
 import { useAuth } from "../context/auth.context";
 
-const SignIn = () => {
+const PasswordRecovery = () => {
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-
-  const { login, user } = useAuth();
+  const { recoveryPassword } = useAuth();
 
   const formik = useFormik({
     validateOnMount: true,
     initialValues: {
       email: "",
-      password: "",
     },
     validate: formikvalidatUsingJoi({
       email: Joi.string()
         .email({ tlds: { allow: false } })
         .required(),
-      password: Joi.string().min(8).max(1024).required(),
     }),
     async onSubmit(values) {
       try {
-        await login(values);
-        navigate("/");
+        await recoveryPassword(values);
         // getJWT();
       } catch ({ response }) {
         if (response && response.status === 400) {
@@ -37,15 +31,13 @@ const SignIn = () => {
       }
     },
   });
-
-  if (user) {
-    return <Navigate to="/" />;
-  }
   return (
     <>
       <PageHeader
-        title={"Sign In With Yammy Recipes"}
-        description={"A few steps and you will be connected"}
+        title={"Trouble logging in?"}
+        description={
+          "Enter your email and we'll send you a link to get back into your account."
+        }
       />
       <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
         {error && <div className="alert alert-danger">{error}</div>}
@@ -56,34 +48,18 @@ const SignIn = () => {
           required
           error={formik.touched.email && formik.errors.email}
         />
-        <Input
-          {...formik.getFieldProps("password")}
-          label="password"
-          type="password"
-          required
-          error={formik.touched.password && formik.errors.password}
-        />
         <div className="my-2">
           <button
             type="submit"
             disabled={!formik.isValid}
             className="btn btn-primary"
           >
-            Sign In
+            Send!
           </button>
         </div>
       </form>
-      <div className="d-flex flex-column">
-        <p>Don't have an account?</p>
-        <NavLink to="/sign-up"> SIGN UP </NavLink>
-        <NavLink to="/sign-up-premium"> SIGN UP PREMIUM </NavLink>
-      </div>
-      <div>
-        <h2>forget your password?</h2>
-        <NavLink to="/password-recovery">click here</NavLink>
-      </div>
     </>
   );
 };
 
-export default SignIn;
+export default PasswordRecovery;

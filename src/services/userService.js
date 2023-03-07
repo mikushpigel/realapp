@@ -22,6 +22,10 @@ export async function conectUser(credentials) {
   setTokenHeader();
 }
 
+export function recoverPassword(email) {
+  return httpServices.post("users/recovery-password", email);
+}
+
 export function logOutUser() {
   localStorage.removeItem(TOKEN_KET);
   setTokenHeader();
@@ -30,6 +34,7 @@ export function logOutUser() {
 export function getUserDetails() {
   try {
     const token = getJWT();
+    console.log("this is renderr!!!!!!");
     return jwtDecode(token);
   } catch {
     return null;
@@ -42,6 +47,7 @@ const userService = {
   conectUser,
   logOutUser,
   getUserDetails,
+  recoverPassword,
 };
 
 export default userService;

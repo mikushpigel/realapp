@@ -10,6 +10,13 @@
     gap: 15px;
 }
 
+.star {
+    border: 0;
+    font-size: 3rem;
+    background-color: rgb(126, 69, 241);
+}
+
+
 .div-img {
     width: 500px;
     height: max-content;
@@ -40,6 +47,15 @@
     padding: 10px 5px;
     border-radius: 8px;
     width: 80px;
+}
+
+.instruction-step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
 }
 
 @include mobile {

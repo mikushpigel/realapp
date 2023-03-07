@@ -3,8 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
 
 const NavBar = ({ onActive }) => {
-  const { user } = useAuth();
-  console.log(user);
   const [isActive, setActiv] = useState(false);
 
   const handleClick = (e) => {

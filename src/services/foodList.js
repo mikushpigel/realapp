@@ -5,7 +5,7 @@ const foodList = [
   "avocado",
   "alfalfa",
   "almond",
-  "arugala",
+  "arugula",
   "artichoke",
   "applesauce",
   "noodles",

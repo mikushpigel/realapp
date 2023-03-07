@@ -19,13 +19,16 @@ const SearchByIngredient = () => {
 
   const handleKeyDown = (e) => {
     if (e.type === "keydown" && e.key === "Enter") {
-      const match = productsList.find((prod) => prod == search);
-      if (match) {
+      const match = productsList.find((prod) => prod === search);
+      const repite = choosenProducts.find((prod) => prod === search);
+      if (!match) {
+        setError("please choose from list");
+      } else if (repite) {
+        setError("already exist in your list");
+      } else if (match && !repite) {
         setChoosenProduct((oldList) => [...oldList, search]);
         choosenProducts.join(",+");
         setInput("");
-      } else {
-        setError("please choose from list");
       }
     }
   };

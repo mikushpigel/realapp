@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAuth } from "../../context/auth.context";
 import useRecipeInfoById from "../../hooks/useRecipeInfoById";
 import recipesService from "../../services/recipeApiServices";
 import { getUserDetails } from "../../services/userService";
@@ -12,7 +13,7 @@ const CardItem = ({ recipe }) => {
     missedIngredientCount: count,
     missedIngredients,
   } = recipe;
-
+  const { user } = useAuth();
   const [isInfo, setInfo] = useState(false);
   const [fullRecipe, setFullRecipe] = useState(null);
   const [error, setError] = useState("");
@@ -23,9 +24,8 @@ const CardItem = ({ recipe }) => {
   };
 
   const onViewFullRecipe = async () => {
-    const user = getUserDetails();
-    if (!user) {
-      setError("This is for business clients Only, please sign in!");
+    if (!user?.biz) {
+      setError("This is for premium clients Only, please sign Up premiume");
       return;
     }
     setInfo(true);
@@ -36,7 +36,11 @@ const CardItem = ({ recipe }) => {
 
   if (isInfo && fullRecipe) {
     return (
-      <PopUpFullRecipe recipe={fullRecipe} onCloseWindow={handleCloseWindow} />
+      <PopUpFullRecipe
+        key={id}
+        recipe={fullRecipe}
+        onCloseWindow={handleCloseWindow}
+      />
     );
   }
 
@@ -76,9 +80,12 @@ const CardItem = ({ recipe }) => {
         </div>
       </div>
       <div className="wrapper-btn">
-        <button onClick={onViewFullRecipe} className="btn-full-recipe">
-          View Full Recipe
-        </button>
+        <div>
+          <button onClick={onViewFullRecipe} className="btn-full-recipe">
+            View Full Recipe
+          </button>
+        </div>
+
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>

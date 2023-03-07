@@ -10,30 +10,35 @@ authContext.displayName = "auth-context";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getUserDetails());
+  const [favRecipes, setFavRecipes] = useState([]);
 
-  const refresState = () => {
+  const refreshUser = () => {
     setUser(getUserDetails());
   };
 
   const login = async (credential) => {
-    const response = await conectUser(credential);
-    refresState();
-    console.log(response);
-    return response;
+    await conectUser(credential);
+    refreshUser();
   };
   const logout = () => {
     logOutUser();
-    refresState();
+    refreshUser();
+  };
+
+  const recoveryPassword = async (email) => {
+    return await userService.recoverPassword(email);
   };
 
   return (
     <authContext.Provider
       value={{
         user,
-        refresState,
+        favRecipes,
+        refreshUser,
         login,
         logout,
         createUser: userService.createUser,
+        recoveryPassword,
       }}
     >
       {children}

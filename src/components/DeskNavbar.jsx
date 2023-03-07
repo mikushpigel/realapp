@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../context/auth.context";
 import { getUserDetails } from "../services/userService";
 
 const DeskNavbar = () => {
+  const { user } = useAuth();
   const [isScroll, setScroll] = useState(0);
 
   const styles = {
@@ -62,30 +64,54 @@ const DeskNavbar = () => {
               | QUICK & EASY |
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              className={isScroll > 0 ? "a-link" : "link-item"}
-              to="my-favorites"
-            >
-              | MY FAVORITES |
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={isScroll > 0 ? "a-link" : "link-item"}
-              to="sign-in"
-            >
-              | SIGN IN |
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={isScroll > 0 ? "a-link" : "link-item"}
-              to="sign-up"
-            >
-              | SIGN UP |
-            </NavLink>
-          </li>
+          {user?.biz && (
+            <li>
+              <NavLink
+                className={isScroll > 0 ? "a-link" : "link-item"}
+                to="my-favorites"
+              >
+                | MY FAVORITES |
+              </NavLink>
+            </li>
+          )}
+
+          {user ? (
+            <li>
+              <NavLink
+                className={isScroll > 0 ? "a-link" : "link-item"}
+                to="sign-out"
+              >
+                | SIGN OUT |
+              </NavLink>
+            </li>
+          ) : (
+            <>
+              <li>
+                <NavLink
+                  className={isScroll > 0 ? "a-link" : "link-item"}
+                  to="sign-in"
+                >
+                  | SIGN IN |
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={isScroll > 0 ? "a-link" : "link-item"}
+                  to="sign-up"
+                >
+                  | SIGN UP |
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={isScroll > 0 ? "a-link" : "link-item"}
+                  to="sign-up-premium"
+                >
+                  | SIGN UP PREMIUM |
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </>

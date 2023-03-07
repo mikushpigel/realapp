@@ -43,10 +43,9 @@
 .wrapper-btn {
     padding: 25px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+
 }
 
 .btn-full-recipe {
@@ -54,7 +53,10 @@
     background-color: rgb(228, 135, 225);
     padding: 10px 5px;
     border-radius: 8px;
+    display: flex;
+    flex: 1;
 }
+
 
 .input-search-recipe {
     border: 3px solid purple;

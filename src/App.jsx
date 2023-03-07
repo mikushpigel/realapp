@@ -1,7 +1,8 @@
 import "./SASS/main.scss";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
 import AboutUs from "./components/AboutUs";
-import Home from "./components/Home";
-import NavBar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import QuickandEasy from "./components/Quick&Easy";
 import MyFavorites from "./components/MyFavorites";
@@ -12,10 +13,17 @@ import DeskNavbar from "./components/DeskNavbar";
 import Index from "./components/Index";
 import Footer from "./components/Footer";
 import SearchByIngredient from "./components/SearchByIngredient";
+import SignUpPremium from "./components/sign-up-premium";
+import SignOut from "./components/Sign-out";
+import PasswordRecovery from "./components/PasswordRecovery";
+import ProtectedRoute from "./components/common/ProtectedRouth";
+import PopUpFullRecipe from "./components/common/popUpFullRecipe";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
+
       <header>
         <Hamburger />
         <DeskNavbar />
@@ -28,9 +36,21 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="search-by-ingredient" element={<SearchByIngredient />} />
           <Route path="quick-and-easy" element={<QuickandEasy />} />
-          <Route path="my-favorites" element={<MyFavorites />} />
+
+          <Route
+            path="my-favorites"
+            element={
+              <ProtectedRoute forPremium>
+                <MyFavorites />
+              </ProtectedRoute>
+            }
+          />
+
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
+          <Route path="sign-up-premium" element={<SignUpPremium />} />
+          <Route path="sign-out" element={<SignOut redirect={"/"} />} />
+          <Route path="password-recovery" element={<PasswordRecovery />} />
         </Routes>
       </main>
       <footer>
