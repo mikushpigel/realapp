@@ -10,8 +10,7 @@ export const useRecipeInfoById = (id) => {
     };
     if (!id) return;
     getRecipeInfoById();
-  }, []);
-  console.log(fullRecipe);
+  }, [id]);
   return fullRecipe;
 };
 

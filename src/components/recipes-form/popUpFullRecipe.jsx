@@ -10,42 +10,13 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow }) => {
     servings,
     image,
     nutrition: { nutrients },
-    steps,
     spoonacularSourceUrl: link,
     analyzedInstructions: [instructions],
   } = recipe;
 
-  const [isFavorite, setFavorit] = useState(false);
-  const [favRecipe, setFavRecipe] = useState(null);
-
-  const onFavorite = () => {
-    setFavorit(!isFavorite);
-  };
-
-  useEffect(() => {
-    if (isFavorite) {
-      setFavRecipe(recipe);
-    }
-    if (!isFavorite) {
-      setFavRecipe(null);
-    }
-  }, [isFavorite]);
-
-  // const [popUp,setPopUp] = useState({id,isOpen:false,isClose:true})
-
   return (
-    <div className="divInfo">
+    <div key={id} className="divInfo">
       <h1>{title}</h1>
-      <div>
-        <button
-          className="star"
-          onClick={onFavorite}
-          title="add to favorite"
-          style={{ color: isFavorite ? "rgb(228, 135, 225)" : "black" }}
-        >
-          <i className="bi bi-star-fill"></i>
-        </button>
-      </div>
       <div className="div-description">
         <p>
           for {servings} servings - ready in {readyInMinutes} minutes

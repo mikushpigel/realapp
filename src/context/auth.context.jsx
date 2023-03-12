@@ -1,4 +1,6 @@
 import { createContext, useContext, useState } from "react";
+import useRecipeByIngredient from "../hooks/useRecipeByIngredient";
+import { getAllFavorites, saveFavorite } from "../services/favServices";
 import userService, {
   conectUser,
   getUserDetails,
@@ -10,7 +12,6 @@ authContext.displayName = "auth-context";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(getUserDetails());
-  const [favRecipes, setFavRecipes] = useState([]);
 
   const refreshUser = () => {
     setUser(getUserDetails());
@@ -33,7 +34,6 @@ const AuthProvider = ({ children }) => {
     <authContext.Provider
       value={{
         user,
-        favRecipes,
         refreshUser,
         login,
         logout,

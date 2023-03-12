@@ -12,12 +12,13 @@ import Hamburger from "./components/Hamburger";
 import DeskNavbar from "./components/DeskNavbar";
 import Index from "./components/Index";
 import Footer from "./components/Footer";
-import SearchByIngredient from "./components/SearchByIngredient";
+import SearchForm from "./components/recipes-form/SearchForm";
 import SignUpPremium from "./components/sign-up-premium";
 import SignOut from "./components/Sign-out";
 import PasswordRecovery from "./components/PasswordRecovery";
 import ProtectedRoute from "./components/common/ProtectedRouth";
-import PopUpFullRecipe from "./components/common/popUpFullRecipe";
+import PopUpFullRecipe from "./components/recipes-form/popUpFullRecipe";
+import Products from "./components/recipes-form/Products";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
           <Route path="index" element={<Index />} />
           <Route path="/" element={<Index />} />
           <Route path="about" element={<AboutUs />} />
-          <Route path="search-by-ingredient" element={<SearchByIngredient />} />
+          <Route path="search" element={<Products />} />
+          {/* <Route path="search-form" element={<SearchForm />} /> */}
           <Route path="quick-and-easy" element={<QuickandEasy />} />
 
           <Route
