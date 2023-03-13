@@ -16,10 +16,6 @@ const RecipesList = ({ prodList }) => {
   const myFavs = UseMyFav();
 
   useEffect(() => {
-    console.log(myFavs, "myfavs!!!!!");
-  }, [myFavs]);
-
-  useEffect(() => {
     const chekfavlist = () => {
       console.log("render useeffect cheack fav list", "matching recipe::::");
       const arr = recipes.map((rec) => {
@@ -27,17 +23,17 @@ const RecipesList = ({ prodList }) => {
         console.log(exist, "render exist");
         if (exist) {
           return {
+            ...rec,
             isInfo: false,
             isFavorite: true,
             fullRecipe: exist.fullRecipe,
-            ...rec,
           };
         }
         return {
+          ...rec,
           isInfo: false,
           isFavorite: false,
           fullRecipe: null,
-          ...rec,
         };
       });
       setMetchingRecipe(arr);
@@ -46,85 +42,18 @@ const RecipesList = ({ prodList }) => {
     chekfavlist();
   }, [recipes, myFavs]);
 
-  // useEffect(() => {
-  //   setMetchingRecipe(recipes);
-  // }, [recipes]);
-
-  // useEffect(() => {
-  //   console.log(myFavs, "myfavs");
-  // }, [prodList, myFavs]);
-  // console.log("myfavs", myFavs);
-
-  // useEffect(()=>{
-  // const renderRecipeByIngridients = async () => {
-  //   const recipes = await recipesService.getRecipeByIngridient(toApi);
-
-  // }
-  // },[matchingRecipes])
-  // useEffect(() => {
-  //   const getRecipeByIngridient = async () => {
-  //     console.log("use recipe byyyy ingrident");
-  //     console.log("matchinggggggggggrecipe", matchingRecipes);
-  //     const toApi = prodList.map((prodname) => prodname.prod);
-  //     const recipes = await recipesService.getRecipeByIngridient(toApi);
-  //     console.log(recipes, "rcipes api!!!!");
-  //     const fixObj = recipes.map((rec) => {
-  //       const exist = myFavs.find((fav) => fav.id === rec.id);
-  //       if (exist) {
-  //         console.log("exist!!!!!!", exist);
-  //         return {
-  //           isInfo: false,
-  //           isFavorite: true,
-  //           fullRecipe: exist.fullRecipe,
-  //           ...rec,
-  //         };
-  //       }
-
-  //       return {
-  //         isInfo: false,
-  //         isFavorite: false,
-  //         fullRecipe: null,
-  //         ...rec,
-  //       };
-  //     });
-  //     console.log("matchinggggggggggrecipe", matchingRecipes);
-  //     setMetchingRecipe(fixObj);
-  //   };
-
-  //   if (!prodList || !myFavs.length) return;
-  //   getRecipeByIngridient();
-  // }, [prodList]);
-
-  // useEffect(() => {
-  //   const getRecipeByIngridient = async () => {
-  //     const getAPI = await recipesService.getRecipeByIngridient(toApi);
-  //     console.log(getAPI);
-
-  //     const fixObj = getAPI.map((obj) => {
-  //       return {
-  //         isInfo: false,
-  //         fullRecipe: favs.find((fav) =>
-  //           fav.id === obj.id ? fav.fullRecipe : null
-  //         ),
-  //         isFavorite: favs.find((fav) => fav.id === obj.id) ? true : false,
-  //         ...obj,
-  //       };
-  //     });
-
-  //     setMetchingRecipe(fixObj);
-  //   };
-
-  //   if (!prodList) return;
-  //   getRecipeByIngridient();
-  // }, [prodList, favs]);
-
-  const onFavorite = (id) => {
+  const onFavorite = async (id, fullInfo) => {
+    console.log(id, fullInfo);
     setMetchingRecipe((recipes) =>
-      recipes.map((recipe) => {
-        if (recipe.id === id) {
-          return { ...recipe, isFavorite: true };
+      recipes.map((rec) => {
+        if (rec.id === id) {
+          return {
+            ...rec,
+            isFavorite: true,
+            fullRecipe: fullInfo,
+          };
         }
-        return recipe;
+        return rec;
       })
     );
   };

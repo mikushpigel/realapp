@@ -15,6 +15,7 @@ export async function getRecipeByIngridient(ingredients) {
   return body;
 }
 export const getRecipeInfoById = async (id) => {
+  console.log("נשלחה בקשה לשרת");
   const response = await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${API_KEY}`,
     {

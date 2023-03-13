@@ -19,6 +19,8 @@ import PasswordRecovery from "./components/PasswordRecovery";
 import ProtectedRoute from "./components/common/ProtectedRouth";
 import PopUpFullRecipe from "./components/recipes-form/popUpFullRecipe";
 import Products from "./components/recipes-form/Products";
+import Deletefav from "./components/recipes-form/deleteFav";
+import DeleteAll from "./components/recipes-form/DeleteAll";
 
 function App() {
   return (
@@ -38,6 +40,24 @@ function App() {
           <Route path="search" element={<Products />} />
           {/* <Route path="search-form" element={<SearchForm />} /> */}
           <Route path="quick-and-easy" element={<QuickandEasy />} />
+
+          <Route
+            path="/my-favorites/delete/:id"
+            element={
+              <ProtectedRoute forPremium>
+                <Deletefav />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/my-favorites/deleteAll"
+            element={
+              <ProtectedRoute forPremium>
+                <DeleteAll />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="my-favorites"

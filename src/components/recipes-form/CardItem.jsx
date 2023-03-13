@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/auth.context";
 import useRecipeInfoById from "../../hooks/useRecipeInfoById";
@@ -13,9 +14,11 @@ const CardItem = ({
   onCloseWindow,
   onFavorite,
   favorites,
+  deleteLink = null,
 }) => {
   const {
     id,
+    _id,
     title,
     image,
     likes,
@@ -41,6 +44,7 @@ const CardItem = ({
   useEffect(() => {
     async function saveToFavorites() {
       if (isClicked) {
+        console.log(fullRecipe);
         const fullInfo = !fullRecipe
           ? await recipesService.getRecipeInfoById(isClicked)
           : fullRecipe;
@@ -66,6 +70,7 @@ const CardItem = ({
             progress: undefined,
             theme: "dark",
           });
+          onFavorite(id, fullInfo);
         } catch ({ response }) {
           if (response && response.status === 400) {
             console.log(response.data);
@@ -73,7 +78,9 @@ const CardItem = ({
         }
       }
     }
-    saveToFavorites(isClicked);
+
+    saveToFavorites();
+    //  return () => setClick(false);
   }, [isClicked]);
 
   const handleClick = () => {
@@ -89,7 +96,7 @@ const CardItem = ({
       return;
     }
     setClick(id);
-    onFavorite(id);
+
     setFavorite(true);
     setError("");
   };
@@ -160,6 +167,7 @@ const CardItem = ({
             View Full Recipe
           </button>
         </div>
+        <div>{deleteLink}</div>
 
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
