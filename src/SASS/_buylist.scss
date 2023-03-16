@@ -1,0 +1,118 @@
+.input-group {
+    padding: 15px;
+    background-color: rgb(175, 136, 173);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    background-color: rgb(54, 43, 63) !important;
+    color: aliceblue !important;
+    box-shadow: 0px 0 15px whitesmoke;
+}
+
+#basic-addon3 {
+    padding: 15px;
+    background-color: rgb(54, 43, 63);
+    color: aliceblue;
+    border: none;
+    box-shadow: 0px 0 15px whitesmoke;
+}
+
+.form-control {
+    border: 0;
+}
+
+.task-box {
+    display: flex;
+}
+
+.todo-item-li {
+    background-color: rgb(211, 184, 210);
+    padding: 5px;
+    border-radius: 8px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.todo-item-task {
+    font-family: "Comic Sans Ms";
+    font-size: 18px;
+    color: rgb(93, 87, 98);
+    overflow: hidden;
+}
+
+.input-checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+.todos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    width: 70vw;
+    margin: 10px auto;
+}
+
+.todos-amount {
+    display: flex;
+    margin-top: 2px;
+    gap: 10px;
+    color: rgb(29, 17, 41);
+}
+
+.deleteAllDiv {
+    display: flex;
+    flex: 1;
+}
+
+.btnDelete {
+    background-color: rgb(29, 5, 5);
+    border-radius: 8px;
+    border: 1px solid rgb(148, 99, 99);
+    box-shadow: 0 0 5px rgb(68, 50, 15);
+    font-family: $basefont;
+    letter-spacing: 2px;
+    padding: 15px;
+    color: aliceblue;
+}
+
+.date-span {
+    background-color: rgba(240, 248, 255, 0.638);
+    color: rgb(54, 43, 63);
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.div-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+// .divInfo {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: rgb(194, 194, 167);
+//     border-radius: 20px 0;
+//     width: 80vw;
+//     margin: 0 auto;
+//     text-align: center;
+// }
+
+.todoInfo {
+    inline-size: 70vw;
+    overflow-wrap: break-word;
+}

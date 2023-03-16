@@ -2,7 +2,7 @@
     width: 100%;
     height: max-content;
     background-color: rgb(126, 69, 241);
-    padding: 25px 10px;
+    padding: 100px 10px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -57,6 +57,49 @@
     text-align: center;
     width: 80%;
 }
+
+.img-ingredient {
+    width: 70px;
+}
+
+.ingrediend-div {
+    display: flex;
+}
+
+.box-ingredient {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 0 !important;
+}
+
+.wrapper-ingredient {
+    background-color: white;
+    width: 100%;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+
+}
+
+.wrapper-ingredient h1 {
+    color: rgb(83, 11, 208);
+}
+
+.btn-shoping-list {
+    border: 3px solid rgb(229, 229, 229);
+    background-color: rgb(50, 25, 105);
+    box-shadow: 0 0 5px whitesmoke;
+    padding: 10px;
+    border-radius: 8px;
+    color: aliceblue;
+    font-family: $basefont;
+}
+
 
 @include mobile {
     .div-img {

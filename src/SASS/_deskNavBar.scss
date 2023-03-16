@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     transition: 0.6s;
+    margin-top: 20px;
 
     .logo-cook {
         height: 9vh;
@@ -57,6 +58,10 @@
 
 .desk-nav.sticky ul li .a-link {
     color: $fill-color;
+}
+
+.desk-nav.sticky {
+    margin-top: 0;
 }
 
 @include mobile {

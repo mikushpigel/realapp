@@ -15,6 +15,7 @@ const CardItem = ({
   onFavorite,
   favorites,
   deleteLink = null,
+  viewFullRecipeLink = null,
 }) => {
   const {
     id,
@@ -24,6 +25,7 @@ const CardItem = ({
     likes,
     missedIngredientCount: count,
     missedIngredients,
+    usedIngredients,
     isInfo,
     isFavorite,
     fullRecipe,
@@ -33,6 +35,7 @@ const CardItem = ({
   const [error, setError] = useState("");
   const [favorite, setFavorite] = useState(false);
   const [isClicked, setClick] = useState(false);
+  const [ingredientsList, setIngredients] = useState(null);
 
   useEffect(() => {
     const exist = favorites.find((fav) => fav.id === id);
@@ -56,6 +59,7 @@ const CardItem = ({
             likes,
             missedIngredientCount: count,
             missedIngredients,
+            usedIngredients,
             fullRecipe: fullInfo,
             isInfo,
             isFavorite: true,
@@ -103,9 +107,7 @@ const CardItem = ({
 
   if (isInfo) {
     console.log("is info true-----ful recipe:::", fullRecipe);
-    return (
-      <PopUpFullRecipe recipe={fullRecipe} onCloseWindow={onCloseWindow} />
-    );
+    return <PopUpFullRecipe recipe={recipe} onCloseWindow={onCloseWindow} />;
   }
 
   return (
@@ -163,6 +165,7 @@ const CardItem = ({
       </div>
       <div className="wrapper-btn">
         <div>
+          {viewFullRecipeLink}
           <button onClick={() => handleClick(id)} className="btn-full-recipe">
             View Full Recipe
           </button>

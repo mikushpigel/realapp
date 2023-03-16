@@ -34,13 +34,11 @@ export function logOutUser() {
 export function getUserDetails() {
   try {
     const token = getJWT();
-    console.log("this is renderr!!!!!!");
     return jwtDecode(token);
   } catch {
     return null;
   }
 }
-console.log(getUserDetails());
 
 const userService = {
   createUser,

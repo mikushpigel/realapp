@@ -74,6 +74,16 @@ const DeskNavbar = () => {
               </NavLink>
             </li>
           )}
+          {user?.biz && (
+            <li>
+              <NavLink
+                className={isScroll > 0 ? "a-link" : "link-item"}
+                to="my-buylist"
+              >
+                | MY BUY LIST |
+              </NavLink>
+            </li>
+          )}
 
           {user ? (
             <li>

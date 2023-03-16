@@ -1,3 +1,5 @@
+import BlessUser from "./common/blessUser";
+
 const Home = () => {
   return (
     <>

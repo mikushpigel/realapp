@@ -72,6 +72,12 @@ h1 {
     opacity: 0.8;
 }
 
+.bless-user-div h1 {
+    color: whitesmoke;
+    padding: 10px;
+    margin-left: 15px;
+}
+
 @keyframes moveInLeft {
     0% {
         opacity: 0;
@@ -125,5 +131,17 @@ h1 {
         font-size: 26px;
         letter-spacing: 0.5px;
 
+    }
+
+    .bless-user-div {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .bless-user-div h1 {
+        font-size: 21px;
     }
 }

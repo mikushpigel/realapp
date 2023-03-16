@@ -1,4 +1,5 @@
 import background from "../images/vegbig.jpg";
+import BlessUser from "./common/blessUser";
 import Home from "./Home";
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
   return (
     <>
       <div className="container-index">
+        <BlessUser />
         <header style={bg} className="header">
           <div className="text-box">
             <div className="heading-primary-main">

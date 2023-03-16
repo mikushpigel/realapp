@@ -9,20 +9,36 @@ import PopUpFullRecipe from "./recipes-form/popUpFullRecipe";
 
 const MyFavorites = () => {
   const favorites = UseMyFav();
+  const [favoriteList, setFavorite] = useState(null);
 
-  const handleClick = async () => {
-    await favServics.deleteAll();
-  };
+  useEffect(() => {
+    setFavorite(favorites);
+  }, [favorites]);
 
   const onViewFullRecipe = (id) => {
-    favorites.map((fav) => {
-      if (fav.id === id) {
-        return { ...fav, isInfo: true };
-      }
-      return fav;
-    });
-    console.log(favorites);
+    setFavorite((favorites) =>
+      favorites.map((fav) => {
+        if (fav.id === id) {
+          return { ...fav, isInfo: true };
+        }
+        return fav;
+      })
+    );
   };
+  const onCloseWindow = (id) => {
+    setFavorite((favorites) =>
+      favorites.map((fav) => {
+        if (fav.id === id) {
+          return { ...fav, isInfo: false };
+        }
+        return fav;
+      })
+    );
+  };
+
+  // if(isInfo){
+  //   return <PopUpFullRecipe recipe={fullRecipe} onCloseWindow={onCloseWindow}/>
+  // }
 
   return (
     <>
@@ -45,16 +61,18 @@ const MyFavorites = () => {
             </Link>
           )}
         </div>
-        <div className="row">
+        <div className="card-container">
           {!favorites.length ? (
             <p>your favorites list is empty</p>
           ) : (
-            favorites.map((recipe) => (
+            favoriteList.map((recipe) => (
               <CardItem
                 key={recipe._id}
                 recipe={recipe}
                 favorites={favorites}
                 onViewFullRecipe={onViewFullRecipe}
+                favoriteList={favoriteList}
+                onCloseWindow={onCloseWindow}
                 deleteLink={
                   <Link
                     to={`/my-favorites/delete/${recipe._id}`}
@@ -63,6 +81,15 @@ const MyFavorites = () => {
                     <i className="bi bi-trash-fill"></i>
                   </Link>
                 }
+
+                // viewFullRecipeLink={
+                //   <Link
+                //     to={`/my-favorites/full-recipe/${recipe.fullRecipe}`}
+                //     className="card-link"
+                //   >
+                //     View Full Recipe
+                //   </Link>
+                // }
               />
             ))
           )}

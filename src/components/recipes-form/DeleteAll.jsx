@@ -5,7 +5,6 @@ import favServics from "../../services/favServices";
 
 const DeleteAll = () => {
   const navigate = useNavigate();
-  const myfavs = UseMyFav();
 
   useEffect(() => {
     const deleteAll = async () => {
@@ -14,7 +13,7 @@ const DeleteAll = () => {
     };
 
     deleteAll();
-  }, [myfavs]);
+  }, []);
 };
 
 export default DeleteAll;
