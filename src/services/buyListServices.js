@@ -1,6 +1,6 @@
 import httpServices from "./httpServices";
 
-export function saveAlist(list) {
+export function saveItem(list) {
   return httpServices.post("/mybuylist", list);
 }
 
@@ -24,7 +24,7 @@ export function updateItem(id, item) {
   return httpServices.patch(`/mybuylist/edit/${id}`, item);
 }
 const buyListServics = {
-  saveAlist,
+  saveItem,
   getAllBuyList,
   deleteItem,
   getItem,

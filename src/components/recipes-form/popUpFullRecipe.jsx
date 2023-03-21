@@ -10,14 +10,13 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
     title,
     image,
     fullRecipe: {
+      extendedIngredients,
       readyInMinutes,
       analyzedInstructions: [instructions],
       servings,
       nutrition: { nutrients },
       spoonacularSourceUrl: link,
     },
-    missedIngredients,
-    usedIngredients,
   } = recipe;
 
   const { user } = useAuth();
@@ -25,16 +24,14 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
   const [buylist, setBuyList] = useState([]);
 
   useEffect(() => {
-    const missedIng = missedIngredients.map(({ name, id, amount, unit }) => {
-      return { name, id, amount, unit };
-    });
-    setBuyList(missedIng);
-    const usedIng = usedIngredients.map(({ name, id, amount, unit }) => {
-      return { name, id, amount, unit };
-    });
-    usedIng.map(({ name, id, amount, unit }) =>
-      setBuyList((oldval) => [...oldval, { name, id, amount, unit }])
+    const ingredients = extendedIngredients.map(
+      ({ name, id, amount, unit }) => {
+        return { name, id, amount, unit };
+      }
     );
+    setBuyList(ingredients);
+
+    if (!extendedIngredients) return;
   }, []);
 
   useEffect(() => {
@@ -42,7 +39,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
       if (isClicked) {
         for (let i = 0; i < buylist.length; i++) {
           try {
-            await buyListServics.saveAlist({
+            await buyListServics.saveItem({
               prod: buylist[i].name,
               id: buylist[i].id,
               isComplete: false,
@@ -54,7 +51,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
             });
           } catch ({ response }) {
             if (response && response.status === 400) {
-              console.log(response.data);
+              toast.error("something went wrong");
               return;
             }
           }
@@ -76,7 +73,16 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
 
   const handleClickBuyList = () => {
     if (!user?.biz) {
-      alert("for premium account only! please sign up premium");
+      toast.error("premium account only!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       return;
     }
     setClick(true);
@@ -98,24 +104,23 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
           <h1>Ingredients</h1>
         </div>
         <div className="ingrediend-div">
-          {missedIngredients.map(({ name, amount, unit, id, image }) => (
-            <div
-              key={id}
-              className="card box-ingredient"
-              style={{ width: "8rem" }}
-            >
-              {Number.isInteger(amount) ? amount : amount.toFixed(1)} {unit}{" "}
-              <img src={image} className="img-ingredient" alt={name} />
-              <p>{name}</p>
-            </div>
-          ))}
-          {usedIngredients.map(({ name, amount, unit, id, image }) => (
-            <div key={id} className="card box-ingredient">
-              {Number.isInteger(amount) ? amount : amount.toFixed(1)} {unit}{" "}
-              <img src={image} className="img-ingredient" alt={name} />
-              <p>{name}</p>
-            </div>
-          ))}
+          {extendedIngredients.map(
+            ({ name, amount, unit, id, image, original }) => (
+              <div
+                key={original}
+                className="card box-ingredient"
+                style={{ width: "8rem" }}
+              >
+                {Number.isInteger(amount) ? amount : amount.toFixed(1)} {unit}{" "}
+                <img
+                  src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
+                  className="img-ingredient"
+                  alt={name}
+                />
+                <p>{name}</p>
+              </div>
+            )
+          )}
         </div>
         <div>
           <button className="btn-shoping-list" onClick={handleClickBuyList}>

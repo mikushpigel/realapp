@@ -6,6 +6,7 @@ import buyListServics from "../../services/buyListServices";
 import PageHeader from "../common/PageHeader";
 import ShopingListForm from "./form";
 import SortShopingList from "./SortShopingList";
+import { v4 as uuid } from "uuid";
 
 const BuyList = () => {
   const list = UseMyBuyList();
@@ -15,8 +16,26 @@ const BuyList = () => {
     setBuyList(list);
   }, [list]);
 
-  const insertItemToList = (input) => {
-    // setBuyList((oldVal))
+  const insertItemToList = async (input) => {
+    const { prod, amount, unit } = input;
+    try {
+      await buyListServics.saveItem({
+        prod: prod,
+        id: uuid(),
+        isComplete: false,
+        isEdit: false,
+        amount: amount,
+        unit: unit,
+      });
+      toast("added successful");
+      const { data } = await buyListServics.getAllBuyList();
+      setBuyList(data);
+    } catch ({ response }) {
+      if (response && response.status === 400) {
+        toast.error("something went wrong");
+        return;
+      }
+    }
   };
 
   const editItemList = (id) => {
@@ -41,6 +60,7 @@ const BuyList = () => {
       toast("update successfuly🎉");
     } catch (error) {
       toast.error("somthing went wrong");
+      console.log(error);
       return;
     }
     setBuyList((items) =>

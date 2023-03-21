@@ -59,6 +59,14 @@ const DeskNavbar = () => {
           <li>
             <NavLink
               className={isScroll > 0 ? "a-link" : "link-item"}
+              to="search-by-nutrients"
+            >
+              | SEARCH BY NUTRIENTS |
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={isScroll > 0 ? "a-link" : "link-item"}
               to="quick-and-easy"
             >
               | QUICK & EASY |

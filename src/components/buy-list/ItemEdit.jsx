@@ -54,6 +54,7 @@ const ItemEdit = ({ details, handleUpdate, handleCancle }) => {
         </button>
         <input
           name="amount"
+          type="number"
           value={inputEdit.amount}
           onChange={handleChange}
           onKeyDown={updateByEnter}

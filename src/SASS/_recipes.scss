@@ -100,3 +100,26 @@
     align-items: center;
     overflow: auto;
 }
+
+.nutrients-types {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-search {
+    display: flex;
+    width: 600px;
+    height: 80px;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 15px rgb(22, 3, 3);
+    font-size: 30px !important;
+    font-family: $titlefont !important;
+    letter-spacing: 8px;
+}
+
+.input-form {
+    width: 300px;
+}

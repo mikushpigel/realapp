@@ -7,6 +7,9 @@
     gap: 15px;
     justify-content: center;
     align-items: center;
+    width: 40vw !important;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .btn {
@@ -21,14 +24,25 @@
     color: aliceblue;
     border: none;
     box-shadow: 0px 0 15px whitesmoke;
+    display: flex;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0 10px 5px rgba(205, 189, 205, 0.876);
 }
 
-.form-control {
-    border: 0;
+.input-form {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 10px 5px rgba(32, 24, 32, 0.876);
+    border-radius: 8px;
+    padding: 15px;
 }
 
 .task-box {
     display: flex;
+    justify-content: center;
 }
 
 .todo-item-li {

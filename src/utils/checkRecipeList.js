@@ -24,6 +24,7 @@ export async function cheakRecipeList(
             fullRecipe: fullInfo,
             isInfo: isInfo === null ? rec.isInfo : isInfo,
             isFavorite: isFavorite === null ? rec.isFavorite : isFavorite,
+            // cardImage: fullInfo.extendedIngredients.length <= 14 ? url : null,
           };
         }
         return rec;

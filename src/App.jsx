@@ -26,6 +26,7 @@ import BuyList from "./components/buy-list/BuyList";
 import BlessUser from "./components/common/blessUser";
 import DeleteProd from "./components/buy-list/DeleteProd";
 import DeleteAllBuyList from "./components/buy-list/DeleteAllBuyList";
+import Nutrients from "./components/recipeByNutrients/Nutrients";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="about" element={<AboutUs />} />
           <Route path="search" element={<Products />} />
+          <Route path="search-by-nutrients" element={<Nutrients />} />
           {/* <Route path="search-form" element={<SearchForm />} /> */}
           <Route path="quick-and-easy" element={<QuickandEasy />} />
           {/* <Route

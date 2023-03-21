@@ -19,7 +19,6 @@ const CardItem = ({
 }) => {
   const {
     id,
-    _id,
     title,
     image,
     likes,
@@ -27,8 +26,11 @@ const CardItem = ({
     missedIngredients,
     usedIngredients,
     isInfo,
-    isFavorite,
     fullRecipe,
+    calories,
+    carbs,
+    fat,
+    protein,
   } = recipe;
 
   const { user } = useAuth();
@@ -51,6 +53,7 @@ const CardItem = ({
         const fullInfo = !fullRecipe
           ? await recipesService.getRecipeInfoById(isClicked)
           : fullRecipe;
+        console.log(fullInfo);
         try {
           await favServics.saveFavorite({
             id,
@@ -94,9 +97,16 @@ const CardItem = ({
 
   const handleFavoriteClick = () => {
     if (!user?.biz) {
-      alert(
-        "The favorites is for premium account only! please sign up premium"
-      );
+      toast.error("premium account only!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
       return;
     }
     setClick(id);
@@ -107,7 +117,9 @@ const CardItem = ({
 
   if (isInfo) {
     console.log("is info true-----ful recipe:::", fullRecipe);
-    return <PopUpFullRecipe recipe={recipe} onCloseWindow={onCloseWindow} />;
+    return (
+      <PopUpFullRecipe recipe={recipe} onCloseWindow={onCloseWindow} key={id} />
+    );
   }
 
   return (
@@ -117,11 +129,13 @@ const CardItem = ({
         <div>
           <h5 className="card-title">{title}</h5>
         </div>
-        <div>
-          <span style={{ color: "purple" }}>
-            {likes} <i className="bi bi-heart-fill"></i>
-          </span>
-        </div>
+        {likes && (
+          <div>
+            <span style={{ color: "purple" }}>
+              {likes} <i className="bi bi-heart-fill"></i>
+            </span>
+          </div>
+        )}
         <div>
           <button
             className="star"
@@ -134,35 +148,48 @@ const CardItem = ({
             </span>
           </button>
         </div>
-        <div className="wrapper-missing-ingredient">
-          <div>
-            <h5>{count} Missing ingredients</h5>
+        {missedIngredients && (
+          <div className="wrapper-missing-ingredient">
+            <div>
+              <h5>{count} Missing ingredients</h5>
+            </div>
+            <div className="missing-ingredients-div">
+              {missedIngredients.map(
+                ({ amount, unit, id, name, image }, index) => {
+                  return (
+                    <div key={index} className="missedIngredientDiv">
+                      {count > 5 ? (
+                        ""
+                      ) : (
+                        <>
+                          <img
+                            src={image}
+                            className="card-img-top"
+                            alt={name}
+                          />
+                          <p>
+                            {name.split(" ").length > 2
+                              ? name.split(" ").slice(0, 2)
+                              : name}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  );
+                }
+              )}
+            </div>
           </div>
-
-          <div className="missing-ingredients-div">
-            {missedIngredients.map(
-              ({ amount, unit, id, name, image }, index) => {
-                return (
-                  <div key={index} className="missedIngredientDiv">
-                    {count > 5 ? (
-                      ""
-                    ) : (
-                      <>
-                        <img src={image} className="card-img-top" alt={name} />
-                        <p>
-                          {name.split(" ").length > 2
-                            ? name.split(" ").slice(0, 2)
-                            : name}
-                        </p>
-                      </>
-                    )}
-                  </div>
-                );
-              }
-            )}
-          </div>
-        </div>
+        )}
       </div>
+      {calories && (
+        <div className="nutrient-div">
+          <li> calories: {calories}</li>
+          <li>protein: {protein}</li>
+          <li>carbs: {carbs}</li>
+          <li>fat: {fat}</li>
+        </div>
+      )}
       <div className="wrapper-btn">
         <div>
           {viewFullRecipeLink}

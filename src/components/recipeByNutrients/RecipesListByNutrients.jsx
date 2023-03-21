@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import UseMyFav from "../../hooks/useMyFav";
-import useRecipeByIngredient from "../../hooks/useRecipeByIngredient";
-import { cheakRecipeList } from "../../utils/checkRecipeList.js";
-import CardItem from "./CardItem";
+import { useRecipeByNutrient } from "../../hooks/useRecipeByNutrient";
+import { cheakRecipeList } from "../../utils/checkRecipeList";
+import CardItem from "../recipes-form/CardItem";
 
-const RecipesList = ({ prodList }) => {
+const RecipesListByNutrient = ({ nutrientsTypes }) => {
   const [matchingRecipes, setMetchingRecipe] = useState([]);
-  const recipes = useRecipeByIngredient(prodList);
+  const recipes = useRecipeByNutrient(nutrientsTypes);
+  console.log("recipes", recipes);
   const myFavs = UseMyFav();
 
   useEffect(() => {
     const chekfavlist = () => {
-      console.log("render useeffect cheack fav list", "matching recipe::::");
       const arr = recipes.map((rec) => {
         const exist = myFavs.find((fav) => fav.id === rec.id);
         console.log(exist, "render exist");
@@ -67,30 +67,25 @@ const RecipesList = ({ prodList }) => {
     );
   };
 
-  if (!matchingRecipes.length) {
+  if (!recipes.length) {
     return <p>Loading...</p>;
   }
   return (
     <>
       <div className="wrapper-cards">
-        {matchingRecipes
-          .sort((a, b) =>
-            a.missedIngredientCount > b.missedIngredientCount ? 1 : -1
-          )
-          .map((recipe) => (
-            <CardItem
-              key={recipe.id}
-              recipe={recipe}
-              onViewFullRecipe={onViewFullRecipe}
-              onCloseWindow={onCloseWindow}
-              favorites={myFavs}
-              onFavorite={onFavorite}
-            />
-          ))}
+        {matchingRecipes.map((recipe) => (
+          <CardItem
+            key={recipe.id}
+            recipe={recipe}
+            onViewFullRecipe={onViewFullRecipe}
+            onCloseWindow={onCloseWindow}
+            favorites={myFavs}
+            onFavorite={onFavorite}
+          />
+        ))}
       </div>
     </>
   );
 };
 
-export default RecipesList;
-
+export default RecipesListByNutrient;
