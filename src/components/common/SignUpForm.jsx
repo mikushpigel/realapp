@@ -52,11 +52,16 @@ const SignUpForm = ({ isBiz, redirect, type = "", description }) => {
   return (
     <>
       <PageHeader
-        title={`Sign Up ${type} with Yammy Recipes`}
+        title={`Sign Up ${type} with Yummy Recipes`}
         description={description}
       />
 
-      <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
+      <form
+        onSubmit={formik.handleSubmit}
+        noValidate
+        autoComplete="off"
+        className="common-form"
+      >
         {error && <div className="alert alert-danger">{error}</div>}
         <Input
           {...formik.getFieldProps("name")}
@@ -84,7 +89,7 @@ const SignUpForm = ({ isBiz, redirect, type = "", description }) => {
           <button
             type="submit"
             disabled={!formik.isValid}
-            className="btn btn-primary"
+            className="btn btn-primary btn-form-common"
           >
             Sign Up {type}
           </button>

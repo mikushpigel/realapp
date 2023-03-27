@@ -2,10 +2,27 @@ import PageHeader from "./common/PageHeader";
 
 const AboutUs = () => {
   return (
-    <PageHeader
-      title={"About Yammy Recipes"}
-      description="An excellent, yeast-risen English muffin bread that has the familiar nooks and crannies just like its smaller muffin cousin, but is much simpler to make because it needs no kneading and requires only one rising. The crusty bread has a soft, pleasantly toothsome texture that goes well with most meals, makes a great sandwich...and of course, makes terrific toast! From start to finish, this homemade bread is ready to eat in less than 90 minutes"
-    />
+    <>
+      <PageHeader
+        title="About Yummy Recipes"
+        description={
+          <>
+            Yummy Recipe is my first full site project, front + back hand <br />
+            Java-Script & React & node.js & mongoDB & Css & SASS. <br />
+            The site allows connection in two ways, normal and premium. <br /> A
+            normal account can search for recipes according to the many
+            searchable categories, and can view them. <br />
+            A premium user can also add recipes to his favorite list and add
+            missing ingredients to his shopping list, edit it and add to the
+            list whatever he wants. <br /> Of course, everything is saved and
+            shown to the user when he logs in with his account.
+          </>
+        }
+      />
+      <div className="logo-img">
+        <img src={require("../images/y (2).png")} alt="" className="image" />
+      </div>
+    </>
   );
 };
 

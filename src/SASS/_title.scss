@@ -1,0 +1,360 @@
+// h1 {
+//     color: rgb(31, 28, 28);
+// }
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    padding: 2rem;
+    font-family: $basefont;
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom,
+            hsla(294, 61%, 82%, 0.198),
+            hsla(141, 69%, 14%, 0.805)),
+        url(../images/background-bakery2.jpg);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.7;
+    color: #777;
+    margin-bottom: 10rem;
+}
+
+.logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+    text-align: center;
+    padding: .5rem;
+
+    img.logo {
+        height: 5rem;
+        animation: rotateLogo 1s ease-in-out;
+    }
+}
+
+.bless-user-div {
+    padding: 1rem;
+
+
+    h3 {
+        color: rgb(193, 187, 187);
+        animation: moveInLeft 1s ease-in-out 1s;
+        animation-fill-mode: backwards;
+        font-family: $titlefont;
+        letter-spacing: .2rem;
+    }
+}
+
+
+
+.text-box {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+
+    h1 {
+        color: #fff;
+        text-transform: uppercase;
+        margin-bottom: 6rem;
+        line-height: 1.7;
+
+        span {
+            display: block;
+
+            &:first-child {
+                font-size: 7rem;
+                letter-spacing: 3.5rem;
+                font-family: "Ranchers",
+                    cursive;
+                animation: moveInLeft 1s ease-out;
+            }
+
+            &:last-child {
+                font-family: $basefont;
+                font-size: 3rem;
+                font-weight: 700;
+
+                letter-spacing: 1.6rem;
+                animation: moveInRight 1s ease-in;
+            }
+        }
+    }
+}
+
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes rotateLogo {
+    0% {
+        opacity: 0;
+        transform: rotate(-15deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-15deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+        transform: scale(1.5);
+    }
+
+    80% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(4rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn-animation {
+    animation: moveInBottom 1.2s ease-in 0.75s;
+    animation-fill-mode: backwards;
+}
+
+.btn-index {
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    position: relative;
+    border: none;
+    box-shadow: 0 .5rem 1rem rgba(244, 235, 235, 0.66);
+}
+
+.btn-index:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.66);
+    color: #777;
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn-index::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn-index:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+
+.page-header {
+    margin-top: 10rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $titlefont;
+    letter-spacing: .18rem;
+    text-align: center;
+
+    img.cook-icon {
+        display: flex;
+        justify-content: left;
+    }
+
+    h1 {
+        color: purple;
+        font-size: 4.5rem;
+    }
+}
+
+
+
+
+.div-description {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: $basefont;
+    width: 40%;
+    margin: 0 auto;
+
+    p {
+        font-size: 2rem;
+    }
+}
+
+
+
+.space-div {
+    height: .5rem;
+}
+
+.input-common-form {
+    font-size: 1.5rem;
+    width: 50vw;
+    font-family: $basefont;
+
+    input {
+        padding: .9rem !important;
+        font-size: 1.4rem !important;
+    }
+
+}
+
+.common-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: center;
+    margin-bottom: 10rem;
+}
+
+.btn-form-common {
+    padding: 1.6rem !important;
+    font-size: 1.9rem !important;
+    font-family: $titlefont !important;
+    letter-spacing: .2rem;
+    border-radius: 1rem !important;
+}
+
+.links-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $basefont;
+    gap: 2rem;
+}
+
+.links-box div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.navlink {
+    font-size: 1.8rem;
+}
+
+.alert-danger {
+    font-size: 1.5rem !important;
+}
+
+
+@include mobile {
+    html {
+        font-size: 42.5%;
+    }
+
+
+    .logo-box {
+        position: fixed;
+        top: 4rem;
+        left: 65%;
+
+        img.logo {
+            animation: rotateLogo 1s ease-in-out 1.5s;
+            animation-fill-mode: backwards;
+        }
+
+    }
+
+    .input-common-form {
+        width: 95vw;
+        font-size: 2rem;
+    }
+
+    .btn-form-common {
+        font-size: 2.1rem !important;
+    }
+
+    .form-control {
+        font-size: 2rem !important;
+
+    }
+
+    .alert-danger {
+        font-size: 2rem !important;
+    }
+
+    .bless-user-div {
+        padding: 1.5rem;
+
+
+        h3 {
+            font-size: 2rem;
+        }
+    }
+}

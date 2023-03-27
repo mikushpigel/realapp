@@ -1,15 +1,15 @@
 #humburger_wrapper {
     position: absolute;
     z-index: 9;
-    top: 60px;
-    left: 15px;
-    width: 20px;
-    padding: 20px 15px;
+    top: 6rem;
+    left: 1.5rem;
+    width: 2rem;
+    padding: 2rem 1.5rem;
     transform: translateY(-50%) scale(2);
 }
 
 #menu_button {
-    width: 39px;
+    width: 3.9rem;
     overflow: hidden;
 }
 
@@ -20,7 +20,7 @@
 #menu_label {
     position: relative;
     display: block;
-    height: 29px;
+    height: 2.9rem;
     cursor: pointer;
 }
 
@@ -30,7 +30,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    height: 5px;
+    height: .5rem;
     background-color: $fill-color-mobile;
 }
 
@@ -45,33 +45,33 @@
 }
 
 #menu_label:after {
-    top: 12px;
+    top: 1.2rem;
 }
 
 #menu_text_bar {
-    top: 24px;
+    top: 2.4rem;
 }
 
 #menu_text_bar:before {
     content: "MENU";
     position: absolute;
-    top: 5px;
+    top: .5rem;
     right: 0;
     left: 0;
     color: #ca8de9;
-    -webkit-text-stroke: 1px #160115;
-    font-size: 13px;
+    -webkit-text-stroke: .1rem #160115;
+    font-size: 1.3rem;
     font-family: Raleway;
     font-weight: bolder;
     text-align: center;
 }
 
 #menu_checkbox:checked+#menu_label:before {
-    left: -39px;
+    left: -3.9rem;
 }
 
 #menu_checkbox:checked+#menu_label:after {
-    left: 39px;
+    left: 3.9rem;
 }
 
 #menu_checkbox:checked+#menu_label #menu_text_bar:before {
@@ -86,11 +86,11 @@
     }
 
     50% {
-        top: -27px;
+        top: -2.7rem;
     }
 
     100% {
-        top: -14px;
+        top: -1.4rem;
     }
 }
 

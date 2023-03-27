@@ -12,7 +12,7 @@ const DeskNavbar = () => {
       isScroll > 0
         ? "linear-gradient(to right bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7))"
         : "",
-    padding: isScroll > 0 ? "10px 100px" : "40px 100px",
+    padding: isScroll > 0 ? "30px 100px" : "40px 100px",
   };
 
   useEffect(() => {
@@ -27,13 +27,13 @@ const DeskNavbar = () => {
         className={isScroll > 0 ? "desk-nav sticky" : "desk-nav"}
         style={styles}
       >
-        <NavLink className={"a-link"} to="/">
+        {/* <NavLink className={"a-link"} to="/">
           <img
             src={require("../images/coook.png")}
             alt="logo"
             className="logo-cook"
           />
-        </NavLink>
+        </NavLink> */}
         <ul className="desk-nav-ul">
           <li>
             <NavLink className={isScroll > 0 ? "a-link" : "link-item"} to="/">

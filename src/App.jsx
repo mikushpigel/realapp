@@ -59,7 +59,7 @@ function App() {
             path="/my-favorites/delete/:id"
             element={
               <ProtectedRoute forPremium>
-                <Deletefav />
+                <Deletefav redirect="/my-favorites" />
               </ProtectedRoute>
             }
           />

@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../context/auth.context";
 
 const NavBar = ({ onActive }) => {
+  const { user } = useAuth();
   const [isActive, setActiv] = useState(false);
 
   const handleClick = (e) => {
@@ -35,33 +36,71 @@ const NavBar = ({ onActive }) => {
         <NavLink
           onClick={handleClick}
           className={"link-item"}
+          to="search-by-nutrients"
+        >
+          | SEARCH BY NUTRIENTS |
+        </NavLink>
+      </li>
+      <li className="navbar-li">
+        <NavLink
+          onClick={handleClick}
+          className={"link-item"}
           to="quick-and-easy"
         >
           | QUICK & EASY |
         </NavLink>
       </li>
-      {/* <li className="navbar-li">
-        <NavLink className={"link-item"} to="kitchen-tips">KITCHEN TIPS</NavLink>
-      </li> */}
-      <li className="navbar-li">
-        <NavLink
-          onClick={handleClick}
-          className={"link-item"}
-          to="my-favorites"
-        >
-          | MY FAVORITES |
-        </NavLink>
-      </li>
-      <li className="navbar-li">
-        <NavLink onClick={handleClick} className={"link-item"} to="sign-in">
-          | SIGN IN |
-        </NavLink>
-      </li>
-      <li className="navbar-li">
-        <NavLink onClick={handleClick} className={"link-item"} to="sign-up">
-          | SIGN UP |
-        </NavLink>
-      </li>
+      {user?.biz && (
+        <>
+          <li className="navbar-li">
+            <NavLink
+              onClick={handleClick}
+              className={"link-item"}
+              to="my-favorites"
+            >
+              | MY FAVORITES |
+            </NavLink>
+          </li>
+          <li className="navbar-li">
+            <NavLink
+              onClick={handleClick}
+              className={"link-item"}
+              to="my-buylist"
+            >
+              | MY BUY LIST |
+            </NavLink>
+          </li>
+        </>
+      )}
+      {user ? (
+        <li className="navbar-li">
+          <NavLink onClick={handleClick} className={"link-item"} to="sign-out">
+            | SIGN OUT |
+          </NavLink>
+        </li>
+      ) : (
+        <>
+          <li className="navbar-li">
+            <NavLink onClick={handleClick} className={"link-item"} to="sign-in">
+              | SIGN IN |
+            </NavLink>
+          </li>
+          <li className="navbar-li">
+            <NavLink onClick={handleClick} className={"link-item"} to="sign-up">
+              | SIGN UP |
+            </NavLink>
+          </li>
+          <li className="navbar-li">
+            <NavLink
+              onClick={handleClick}
+              className={"link-item"}
+              to="sign-up-premium"
+            >
+              | SIGN UP PREMIUM|
+            </NavLink>
+          </li>
+        </>
+      )}
     </ul>
   );
 };

@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/auth.context";
 import UseMyFav from "../hooks/useMyFav";
-import favServics from "../services/favServices";
-import recipesService from "../services/recipeApiServices";
 import PageHeader from "./common/PageHeader";
 import CardItem from "./recipes-form/CardItem";
-import PopUpFullRecipe from "./recipes-form/popUpFullRecipe";
 
 const MyFavorites = () => {
   const favorites = UseMyFav();
@@ -47,22 +43,15 @@ const MyFavorites = () => {
         title="My Favorites"
         description="Your favorite are in the list below"
       />
-      <div className="wrapper">
+      <div className="wrapper-cards">
         <div>
-          {/* <button
-            className="delete-btn"
-            title="delete all favorites"
-            onClick={handleClick}
-          >
-            <i className="bi bi-trash-fill"></i>
-          </button> */}
           {favorites.length > 0 && (
             <Link to={`/my-favorites/deleteAll`} className="card-link">
               Delete All Favorites
             </Link>
           )}
         </div>
-        <div className="card-container">
+        <div className="wrapper-cards">
           {!favorites.length ? (
             <p>your favorites list is empty</p>
           ) : (

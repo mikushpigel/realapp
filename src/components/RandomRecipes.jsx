@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import UseMyFav from "../../hooks/useMyFav";
-import useRecipeByIngredient from "../../hooks/useRecipeByIngredient";
-import { cheakRecipeList } from "../../utils/checkRecipeList.js";
-import CardItem from "./CardItem";
+import UseMyFav from "../hooks/useMyFav";
+import { useRandomRecipes } from "../hooks/useRandomRecipes";
+import { cheakRecipeList } from "../utils/checkRecipeList";
+import BlessUser from "./common/blessUser";
+import PageHeader from "./common/PageHeader";
+import CardItem from "./recipes-form/CardItem";
 
-const RecipesList = ({ prodList }) => {
-  const [matchingRecipes, setMetchingRecipe] = useState([]);
-  const recipes = useRecipeByIngredient(prodList);
+const RandomRecipes = () => {
+  const [randomRecipesList, setRandomRecipes] = useState([]);
+  const randomRecipes = useRandomRecipes();
   const myFavs = UseMyFav();
 
   useEffect(() => {
     const chekfavlist = () => {
-      console.log("render useeffect cheack fav list", "matching recipe::::");
-      const arr = recipes.map((rec) => {
+      const arr = randomRecipes.map((rec) => {
         const exist = myFavs.find((fav) => fav.id === rec.id);
-        console.log(exist, "render exist");
+        console.log(exist, "exist random recipe");
         if (exist) {
           return {
             ...rec,
@@ -30,15 +31,14 @@ const RecipesList = ({ prodList }) => {
           fullRecipe: null,
         };
       });
-      setMetchingRecipe(arr);
+      setRandomRecipes(arr);
     };
-    if (!recipes.length) return;
+    if (!randomRecipes.length) return;
     chekfavlist();
-  }, [recipes, myFavs]);
+  }, [randomRecipes, myFavs]);
 
   const onFavorite = async (id, fullInfo) => {
-    console.log(id, fullInfo);
-    setMetchingRecipe((recipes) =>
+    setRandomRecipes((recipes) =>
       recipes.map((rec) => {
         if (rec.id === id) {
           return {
@@ -53,11 +53,11 @@ const RecipesList = ({ prodList }) => {
   };
 
   async function onViewFullRecipe(id) {
-    await cheakRecipeList(matchingRecipes, id, setMetchingRecipe, true, null);
+    await cheakRecipeList(randomRecipesList, id, setRandomRecipes, true, null);
   }
 
   const onCloseWindow = (id) => {
-    setMetchingRecipe((recipes) =>
+    setRandomRecipes((recipes) =>
       recipes.map((rec) => {
         if (rec.id === id) {
           return { ...rec, isInfo: false };
@@ -67,29 +67,31 @@ const RecipesList = ({ prodList }) => {
     );
   };
 
-  if (!matchingRecipes.length) {
-    return <p>Loading...</p>;
+  if (!randomRecipes) {
+    return <p>Loading</p>;
   }
+
   return (
     <>
-      <div className="wrapper-cards">
-        {matchingRecipes
-          .sort((a, b) =>
-            a.missedIngredientCount > b.missedIngredientCount ? 1 : -1
-          )
-          .map((recipe) => (
+      <div className="space-div" id="homeid"></div>
+      <PageHeader title="Show me the Yummy " />
+      <div className="wrapper">
+        <div className="card-container">
+          {" "}
+          {randomRecipesList.map((recipe) => (
             <CardItem
               key={recipe.id}
               recipe={recipe}
-              onViewFullRecipe={onViewFullRecipe}
-              onCloseWindow={onCloseWindow}
               favorites={myFavs}
               onFavorite={onFavorite}
+              onCloseWindow={onCloseWindow}
+              onViewFullRecipe={onViewFullRecipe}
             />
           ))}
+        </div>
       </div>
     </>
   );
 };
 
-export default RecipesList;
+export default RandomRecipes;

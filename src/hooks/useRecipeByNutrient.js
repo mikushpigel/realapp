@@ -3,7 +3,7 @@ import recipesService from "../services/recipeApiServices";
 import UseMyFav from "./useMyFav";
 
 export const useRecipeByNutrient = (nutrients) => {
-  const [matchingRecipe, setMetchingRecipe] = useState([]);
+  const [matchingRecipe, setMetchingRecipe] = useState(null);
 
   useEffect(() => {
     const getRecipeByNutrients = async () => {

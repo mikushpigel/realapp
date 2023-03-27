@@ -1,49 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
 
-// body {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-//   background-color: rgb(237, 125, 237);
-// }
 
 ul.navbar-ul {
-  display: flex;
-  gap: 15px;
-  list-style-type: none;
+  // display: flex;
+  // gap: 1.5rem;
+  // list-style-type: none;
   display: none;
 
 }
 
-li.navbar-li {
-  padding: 6px 0;
-}
 
-li.navbar-li .link-item {
-  position: relative;
-  display: block;
-  padding: 4px 0;
-  font: 700 3rem Raleway;
-  text-decoration: none;
-  /* text-transform: lowercase; */
-  -webkit-text-stroke: 2px $fill-color-mobile;
-  background: linear-gradient($fill-color-mobile 0 100%) left / 0 no-repeat;
-  color: transparent;
-  background-clip: text;
-  transition: 0.5s linear;
-}
 
-li.navbar-li .link-item:hover {
-  background-size: 100%;
-}
+
+
 
 @include mobile {
   ul.navbar-ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 15px 5px;
+    gap: 1rem;
+    padding: 1.5rem .5rem;
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -57,7 +33,20 @@ li.navbar-li .link-item:hover {
     padding: 0;
   }
 
+  li.navbar-li {
+    padding: .6rem 0;
+  }
+
   li.navbar-li .link-item {
-    font: 700 1.6rem Raleway;
+    font: 700 4rem Raleway;
+    position: relative;
+    display: block;
+    padding: .4rem 0;
+    text-decoration: none;
+    -webkit-text-stroke: .2rem $fill-color-mobile;
+    background: linear-gradient($fill-color-mobile 0 100%) left / 0 no-repeat;
+    color: transparent;
+    background-clip: text;
+    transition: 0.5s linear;
   }
 }

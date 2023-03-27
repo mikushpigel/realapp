@@ -44,10 +44,15 @@ const SignIn = () => {
   return (
     <>
       <PageHeader
-        title={"Sign In With Yammy Recipes"}
+        title={"Sign In With Yummy Recipes"}
         description={"A few steps and you will be connected"}
       />
-      <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
+      <form
+        onSubmit={formik.handleSubmit}
+        noValidate
+        autoComplete="off"
+        className="common-form"
+      >
         {error && <div className="alert alert-danger">{error}</div>}
         <Input
           {...formik.getFieldProps("email")}
@@ -67,20 +72,31 @@ const SignIn = () => {
           <button
             type="submit"
             disabled={!formik.isValid}
-            className="btn btn-primary"
+            className="btn btn-primary btn-form-common "
           >
             Sign In
           </button>
         </div>
       </form>
-      <div className="d-flex flex-column">
-        <p>Don't have an account?</p>
-        <NavLink to="/sign-up"> SIGN UP </NavLink>
-        <NavLink to="/sign-up-premium"> SIGN UP PREMIUM </NavLink>
-      </div>
-      <div>
-        <h2>forget your password?</h2>
-        <NavLink to="/password-recovery">click here</NavLink>
+      <div className="links-box">
+        <div>
+          <h2>Don't have an account?</h2>
+          <NavLink className="navlink" to="/sign-up">
+            {" "}
+            SIGN UP{" "}
+          </NavLink>
+          <NavLink className="navlink" to="/sign-up-premium">
+            {" "}
+            SIGN UP PREMIUM{" "}
+          </NavLink>
+        </div>
+
+        <div>
+          <h2>Forget your password?</h2>
+          <NavLink className="navlink" to="/password-recovery">
+            Click Here
+          </NavLink>
+        </div>
       </div>
     </>
   );

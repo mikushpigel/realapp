@@ -1,18 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Ranchers&display=swap');
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 
 
 $fill-color: rgb(13, 2, 22);
 $fill-color-mobile: rgb(237, 125, 237);
 $titlefont: 'Ranchers';
-$basefont: 'Raleway';
+$basefont: 'Lato';
+// $basefont: 'Raleway';
 
 
 

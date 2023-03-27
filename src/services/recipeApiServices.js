@@ -1,9 +1,9 @@
 const API_KEY = "7912b7d9a1b047e2968e0caee8219a7b";
-// const BASE_URL = "https://api.spoonacular.com/recipes";
+const BASE_URL = "https://api.spoonacular.com/recipes";
 
 export async function getRecipeByIngridient(ingredients) {
   const response = await fetch(
-    `${BASE_URL}/findByIngredients?ingredients=${ingredients}&number=2&apiKey=${API_KEY}`,
+    `${BASE_URL}/findByIngredients?ingredients=${ingredients}&number=20&apiKey=${API_KEY}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -43,17 +43,29 @@ export const getRecipeByNutrients = async (nutrients) => {
   return body;
 };
 
-const BASE_URL = "https://api.spoonacular.com/recipes";
-export const getRecipeCardById = async (id) => {
-  const response = await fetch(`${BASE_URL}/${id}/card?apiKey=${API_KEY}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+export const getRandomRecipes = async () => {
+  const response = await fetch(
+    `${BASE_URL}/random?number=8&apiKey=${API_KEY}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const body = await response.json();
-
   return body;
 };
+
+// export const getRecipeCardById = async (id) => {
+//   const response = await fetch(`${BASE_URL}/${id}/card?apiKey=${API_KEY}`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   const body = await response.json();
+
+//   return body;
+// };
 
 // export const getProductNutritionByIdWidget = async (id) => {
 //   const response = await fetch(
@@ -72,7 +84,7 @@ const recipesService = {
   getRecipeByIngridient,
   getRecipeInfoById,
   getRecipeByNutrients,
-  getRecipeCardById,
+  getRandomRecipes,
 };
 
 export default recipesService;

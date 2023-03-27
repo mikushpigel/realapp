@@ -28,16 +28,17 @@ const Products = () => {
   return (
     <>
       <SearchForm onSubmit={insertProductsToList} choosenProducts={products} />
-      {/* {products.length > 0 && (
-        <div className="deleteAllDiv">
-          <button onClick={removeAll} className="btnDelete">
-            Delete All
-          </button>
-        </div>
-      )} */}
-      {products.map(({ id, prod }) => (
-        <ProdItem key={id} prod={prod} id={id} onRemove={onRemove} />
-      ))}
+      <div
+        className="prod-list-wrapper"
+        // style={{
+        //   backgroundColor: products.length > 0 ? "rgb(232, 187, 238)" : "white",
+        // }}
+      >
+        {products.map(({ id, prod }) => (
+          <ProdItem key={id} prod={prod} id={id} onRemove={onRemove} />
+        ))}
+      </div>
+
       {products.length > 0 && <RecipesList prodList={products} />}
     </>
   );

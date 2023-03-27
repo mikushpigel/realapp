@@ -21,6 +21,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
 
   const { user } = useAuth();
   const [isClicked, setClick] = useState(false);
+  const [isInBuyList, setClickToBuyList] = useState(false);
   const [buylist, setBuyList] = useState([]);
 
   useEffect(() => {
@@ -86,11 +87,12 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
       return;
     }
     setClick(true);
+    setClickToBuyList(true);
   };
 
   return (
     <div key={id} className="divInfo">
-      <h1>{title}</h1>
+      <h1 className="popup-h1">{title}</h1>
       <div className="div-description">
         <p>
           for {servings} servings - ready in {readyInMinutes} minutes
@@ -100,9 +102,8 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
         <img src={image} className="img-popup" alt={title} />
       </div>
       <div className="wrapper-ingredient">
-        <div>
-          <h1>Ingredients</h1>
-        </div>
+        <h1 className="popup-h1">Ingredients</h1>
+
         <div className="ingrediend-div">
           {extendedIngredients.map(
             ({ name, amount, unit, id, image, original }) => (
@@ -123,27 +124,36 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
           )}
         </div>
         <div>
-          <button className="btn-shoping-list" onClick={handleClickBuyList}>
-            <i className="bi bi-card-list"></i>Add To Shopping List
+          <button
+            className="btn-shoping-list"
+            onClick={handleClickBuyList}
+            title={isInBuyList ? "already added" : ""}
+            disabled={isInBuyList}
+            style={{ backgroundColor: isInBuyList ? "grey" : "" }}
+          >
+            <i className="bi bi-card-list"></i>&nbsp;&nbsp;&nbsp;Add To Shopping
+            List
           </button>
         </div>
       </div>
 
       <div className="instruction-step">
-        <h1>Method</h1>
+        <h1 className="popup-h1">Method</h1>
         {instructions &&
           instructions.steps.map(({ number, step }, index) => (
             <li key={index}>
               {number}. {step}
             </li>
           ))}
-        <Link to={link} target="_blank">
-          for more details
-        </Link>
+        <div className="link-web">
+          <Link className="details-link" to={link} target="_blank">
+            for more details
+          </Link>
+        </div>
       </div>
 
       <div className="nutrients-wrapper">
-        <h3>Nutritional Information</h3>
+        <h1 className="popup-h1">Nutritional Information</h1>
         {nutrients.map(({ name, amount, unit }, index) => (
           <>
             <div key={index} className="nutrients-div">
@@ -151,12 +161,6 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
                 <span style={{ fontWeight: "bolder" }}>{name}: </span>
                 {amount}
                 {unit}
-                {/* {name === "Calories" ||
-                name === "Fat" ||
-                name === "Carbohydrates" ||
-                name === "Protein"
-                  ? `${name}: ${amount}${unit}`
-                  : null} */}
               </p>
             </div>
           </>

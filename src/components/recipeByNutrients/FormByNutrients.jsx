@@ -2,7 +2,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const FormByNutrients = ({ onSubmit }) => {
-  const [error, setError] = useState("");
   const [input, setInput] = useState({
     minCarbs: "",
     maxCarbs: "",
@@ -147,10 +146,6 @@ const FormByNutrients = ({ onSubmit }) => {
         <button onClick={handleSubmit} className="btn btn-search">
           SEARCH
         </button>
-      </div>
-
-      <div className="div-error">
-        {error && <span style={{ color: "red" }}>{error}</span>}
       </div>
     </div>
   );

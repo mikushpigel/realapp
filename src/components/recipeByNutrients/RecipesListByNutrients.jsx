@@ -32,7 +32,7 @@ const RecipesListByNutrient = ({ nutrientsTypes }) => {
       });
       setMetchingRecipe(arr);
     };
-    if (!recipes.length) return;
+    if (!recipes) return;
     chekfavlist();
   }, [recipes, myFavs]);
 
@@ -67,8 +67,21 @@ const RecipesListByNutrient = ({ nutrientsTypes }) => {
     );
   };
 
-  if (!recipes.length) {
-    return <p>Loading...</p>;
+  if (!recipes) {
+    return (
+      <div className="loading">
+        <p>Loading...</p>;
+      </div>
+    );
+  }
+  if (Array.isArray(recipes) && !recipes.length) {
+    return (
+      <div className="noresult-div">
+        <h4>
+          Unfortunately, no recipes were found for the values you requested
+        </h4>
+      </div>
+    );
   }
   return (
     <>

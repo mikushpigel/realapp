@@ -7,18 +7,18 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
 .star {
     border: 0;
-    font-size: 3rem;
+    font-size: 4rem;
     background-color: white;
 }
 
 
 .div-img {
-    width: 500px;
+    width: 50rem;
     height: max-content;
     border-radius: 50%;
 }
@@ -34,6 +34,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+
+}
+
+.nutrients-wrapper h1 {
+    margin-bottom: 2.2rem;
 }
 
 .nutrients-div {
@@ -41,12 +48,20 @@
 
 }
 
+.link-web {
+    font-size: 2rem;
+}
+
 .close-full-recipe {
-    border: 3px solid purple;
+    border: .3rem solid purple;
     background-color: rgb(228, 135, 225);
-    padding: 10px 5px;
-    border-radius: 8px;
-    width: 80px;
+    padding: 1.5rem 3rem;
+    border-radius: .8rem;
+    font-size: 1.8rem;
+}
+
+.bi {
+    font-size: 2rem;
 }
 
 .instruction-step {
@@ -55,15 +70,32 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 80%;
+    gap: 1.5rem;
+    width: 50%;
+    font-size: 1.6rem;
+    font-family: "Lato";
+
+}
+
+.instruction-step li {
+    color: black;
+    padding: 1.5rem;
 }
 
 .img-ingredient {
-    width: 70px;
+    width: 7rem;
 }
 
 .ingrediend-div {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    text-align: center;
+    font-family: $basefont;
+    width: 90%;
 }
 
 .extandIng-div {
@@ -82,32 +114,71 @@
 .wrapper-ingredient {
     background-color: white;
     width: 100%;
-    padding: 70px;
+    padding: 7rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 3.5rem;
 
 }
 
 .wrapper-ingredient h1 {
     color: rgb(83, 11, 208);
+    font-family: $titlefont;
+    font-size: 4rem;
+}
+
+.popup-h1 {
+    font-family: $titlefont;
+    font-size: 4rem;
 }
 
 .btn-shoping-list {
-    border: 3px solid rgb(229, 229, 229);
+    border: .3rem solid rgb(229, 229, 229);
     background-color: rgb(50, 25, 105);
-    box-shadow: 0 0 5px whitesmoke;
-    padding: 10px;
-    border-radius: 8px;
+    box-shadow: 0 0 .5rem whitesmoke;
+    padding: 1.3rem;
+    border-radius: 1rem !important;
     color: aliceblue;
     font-family: $basefont;
+    font-size: 1.6rem;
+}
+
+.details-link {
+    font-size: 2rem;
+    color: aliceblue;
 }
 
 
 @include mobile {
     .div-img {
         width: 90vw;
+    }
+
+    .ingrediend-div {
+        font-size: 1.8rem;
+    }
+
+    .btn-shoping-list {
+        font-size: 2.2rem;
+        padding: 2rem;
+    }
+
+    .instruction-step,
+    .nutrients-wrapper {
+        font-size: 2.4rem;
+    }
+
+    .popup-h1 {
+        font-size: 5rem;
+    }
+
+    .close-full-recipe {
+        padding: 1.5rem 5rem;
+    }
+
+    .bi-x-circle {
+        font-size: 3rem;
     }
 }

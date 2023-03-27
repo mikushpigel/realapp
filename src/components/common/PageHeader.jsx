@@ -5,7 +5,7 @@ const PageHeader = ({ title, description }) => {
         <div>
           <img
             src={require("../../images/cook_icon.png")}
-            style={{ width: "48px" }}
+            style={{ width: "4.8rem" }}
             className="cook-icon"
             alt=""
           />

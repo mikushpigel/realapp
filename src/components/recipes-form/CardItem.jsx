@@ -106,6 +106,7 @@ const CardItem = ({
         draggable: true,
         progress: undefined,
         theme: "dark",
+        fontSize: "5rem",
       });
       return;
     }
@@ -123,15 +124,15 @@ const CardItem = ({
   }
 
   return (
-    <div className="card card-recipe" style={{ width: "18rem" }}>
+    <div className="card card-recipe">
       <img src={image} className="card-img-top" alt={title} />
       <div className="card-body">
         <div>
-          <h5 className="card-title">{title}</h5>
+          <h1 className="card-title">{title}</h1>
         </div>
-        {likes && (
+        {(likes || likes === 0) && (
           <div>
-            <span style={{ color: "purple" }}>
+            <span style={{ color: "purple", fontSize: "2.5rem" }}>
               {likes} <i className="bi bi-heart-fill"></i>
             </span>
           </div>
@@ -148,10 +149,10 @@ const CardItem = ({
             </span>
           </button>
         </div>
-        {missedIngredients && (
+        {count && (
           <div className="wrapper-missing-ingredient">
             <div>
-              <h5>{count} Missing ingredients</h5>
+              <h4>{count} Missing ingredients</h4>
             </div>
             <div className="missing-ingredients-div">
               {missedIngredients.map(
@@ -164,14 +165,14 @@ const CardItem = ({
                         <>
                           <img
                             src={image}
-                            className="card-img-top"
+                            className="img-ingredient"
                             alt={name}
                           />
-                          <p>
+                          {/* <p>
                             {name.split(" ").length > 2
                               ? name.split(" ").slice(0, 2)
                               : name}
-                          </p>
+                          </p> */}
                         </>
                       )}
                     </div>

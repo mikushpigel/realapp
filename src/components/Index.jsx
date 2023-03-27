@@ -1,30 +1,45 @@
+import { required } from "joi";
 import background from "../images/vegbig.jpg";
 import BlessUser from "./common/blessUser";
-import Home from "./Home";
+import RandomRecipes from "./RandomRecipes";
 
 const Index = () => {
-  const bg = {
-    background: `linear-gradient(to right bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7)),
-  url(${background})`,
-    backgroundSize: "cover",
-    backgroundPosition: "top",
-    position: "relative",
-    clipPath: "polygon(0 0,100% 0,100% 75vh, 0 100%)",
+  const handleClickScroll = () => {
+    const element = document.getElementById("homeid");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
   return (
     <>
-      <div className="container-index">
-        <BlessUser />
-        <header style={bg} className="header">
-          <div className="text-box">
-            <div className="heading-primary-main">
-              Yammy<span className="span-main-title">recipes</span>
-              <div className="heading-primary-sub">Add flavor to your life</div>
-            </div>
-          </div>
-        </header>
-        <Home />
-      </div>
+      <header className="header">
+        <div class="logo-box">
+          <img
+            src={require("../images/yammygif.gif")}
+            alt="Logo"
+            class="logo"
+          />
+          <BlessUser />
+        </div>
+
+        <div class="text-box">
+          <h1 class="heading-primary">
+            <span class="heading-primary-main">Yummy Recipes</span>
+            <span class="heading-primary-sub">
+              Add Some Flavor To Your Life
+            </span>
+          </h1>
+
+          <button
+            className="btn-index btn-white btn-animation"
+            onClick={handleClickScroll}
+          >
+            discover our site
+          </button>
+        </div>
+      </header>
+
+      <RandomRecipes />
     </>
   );
 };
