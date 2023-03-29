@@ -27,6 +27,7 @@ import BlessUser from "./components/common/blessUser";
 import DeleteProd from "./components/buy-list/DeleteProd";
 import DeleteAllBuyList from "./components/buy-list/DeleteAllBuyList";
 import Nutrients from "./components/recipeByNutrients/Nutrients";
+import StyleFav from "./components/StyleFav";
 
 function App() {
   return (
@@ -109,6 +110,7 @@ function App() {
           <Route path="sign-up-premium" element={<SignUpPremium />} />
           <Route path="sign-out" element={<SignOut redirect={"/"} />} />
           <Route path="password-recovery" element={<PasswordRecovery />} />
+          <Route path="style-fav" element={<StyleFav />} />
         </Routes>
       </main>
       <footer>

@@ -5,12 +5,24 @@
 
 
 
-$fill-color: rgb(13, 2, 22);
+$fill-color: rgb(242, 239, 245);
 $fill-color-mobile: rgb(237, 125, 237);
+$fill-color-title-scroll: rgb(158, 85, 156);
+$fill-color-title: rgb(146, 124, 146);
+$fill-color-dark: rgb(55, 52, 52);
+$fill-dd: #cda99dd6;
 $titlefont: 'Ranchers';
 $basefont: 'Lato';
 // $basefont: 'Raleway';
 
+// <div className="backery__div"><img src= {
+//     require("../images/background-bakery1.jpg")
+// }
+
+// alt="vegtabales image"
+// className="backery__image"
+// />
+// </div>
 
 
 
@@ -18,6 +30,11 @@ $basefont: 'Lato';
 // $color:hotpink;
 // $basefont:'Roboto';
 
+@mixin big-desktop {
+    @media (min-width:2560px) {
+        @content;
+    }
+}
 
 @mixin desktop {
     @media (min-width:576px) {

@@ -1,3 +1,16 @@
+@mixin style-desk-navbar($color1, $color2) {
+    position: relative;
+    display: block;
+    margin: 0 1.5rem;
+    font: 700 2.2rem Raleway;
+    text-decoration: none;
+    -webkit-text-stroke: .2rem $color1;
+    background: linear-gradient($color2 0 100%) left / 0 no-repeat;
+    color: transparent;
+    background-clip: text;
+    transition: 0.5s linear;
+}
+
 .desk-nav {
     position: fixed;
     z-index: 800;
@@ -27,29 +40,18 @@
             list-style-type: none;
 
             .a-link {
-                position: relative;
-                margin: 0 1.5rem;
-                text-decoration: none;
-                color: rgb(240, 222, 222);
-                letter-spacing: .1rem;
-                transition: 0.7s;
-                font: 700 1.8rem Raleway;
+                @include style-desk-navbar($fill-color-dark, $fill-color-dark);
+
+                &:hover {
+                    background-size: 100%;
+                }
             }
         }
     }
 }
 
 .desk-nav ul li .link-item {
-    position: relative;
-    display: block;
-    margin: 0 1.5rem;
-    font: 700 2.2rem Raleway;
-    text-decoration: none;
-    -webkit-text-stroke: .2rem $fill-color;
-    background: linear-gradient($fill-color 0 100%) left / 0 no-repeat;
-    color: transparent;
-    background-clip: text;
-    transition: 0.5s linear;
+    @include style-desk-navbar($fill-color-title, $fill-color-mobile);
 
     &:hover {
         background-size: 100%;
@@ -57,7 +59,7 @@
 }
 
 .desk-nav.sticky ul li .a-link {
-    color: $fill-color;
+    color: $fill-color-dark;
 }
 
 .desk-nav.sticky {

@@ -6,6 +6,7 @@ import formikvalidatUsingJoi from "../utils/formikValidationUsingJoi";
 import PageHeader from "./common/PageHeader";
 import { useAuth } from "../context/auth.context";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PasswordRecovery = () => {
   const [error, setError] = useState("");
@@ -19,40 +20,16 @@ const PasswordRecovery = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const schema = Joi.object({
-      email: Joi.string()
-        .email({ tlds: { allow: false } })
-        .required(),
-    });
-    //const val = await schema.validateAsync({ email: input });
     try {
       await recoveryPassword({ email: input });
+      toast.success("email sent successfuly!");
+      setInput("");
     } catch ({ response }) {
       // setError(details[0].message);
       setError(response.data);
       return;
     }
   };
-
-  // const formik = useFormik({
-  //   validateOnMount: true,
-  //   initialValues: {
-  //     email: "",
-  //   },
-  //   validate: formikvalidatUsingJoi({
-  //     email: Joi.string()
-  //       .email({ tlds: { allow: false } })
-  //       .required(),
-  //   }),
-  //   async onSubmit(values) {
-  //     try {
-  //       await recoveryPassword(values);
-  //       // getJWT();
-  //     } catch ({ response }) {
-  //       setError(response.data);
-  //     }
-  //   },
-  // });
 
   if (user) {
     return <Navigate to="/" />;

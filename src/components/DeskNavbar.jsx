@@ -9,9 +9,8 @@ const DeskNavbar = () => {
 
   const styles = {
     background:
-      isScroll > 0
-        ? "linear-gradient(to right bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7))"
-        : "",
+      isScroll > 0 ? "linear-gradient(to right, #355c7d, #cda99dd6 )" : "",
+
     padding: isScroll > 0 ? "30px 100px" : "40px 100px",
   };
 

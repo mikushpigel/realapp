@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import UseMyFav from "../hooks/useMyFav";
 import PageHeader from "./common/PageHeader";
 import CardItem from "./recipes-form/CardItem";
+import ImageRecipeCard from "./recipes-form/ImageRecipeCard";
+import StyleFav from "./StyleFav";
 
 const MyFavorites = () => {
   const favorites = UseMyFav();
@@ -39,49 +41,40 @@ const MyFavorites = () => {
 
   return (
     <>
-      <PageHeader
+      <StyleFav />
+      {/* <PageHeader
         title="My Favorites"
         description="Your favorite are in the list below"
-      />
-      <div className="wrapper-cards">
-        <div>
+      /> */}
+
+      <div className="wrapper-cards-favorites">
+        {!favorites.length ? (
+          <p>your favorites list is empty</p>
+        ) : (
+          favoriteList.map((recipe) => (
+            <ImageRecipeCard
+              key={recipe._id}
+              recipe={recipe}
+              favorites={favorites}
+              onViewFullRecipe={onViewFullRecipe}
+              favoriteList={favoriteList}
+              onCloseWindow={onCloseWindow}
+              deleteLink={
+                <Link
+                  to={`/my-favorites/delete/${recipe._id}`}
+                  className="card-link"
+                >
+                  <i className="bi bi-trash-fill"></i>
+                </Link>
+              }
+            />
+          ))
+        )}
+        <div className="delete-all-fav">
           {favorites.length > 0 && (
             <Link to={`/my-favorites/deleteAll`} className="card-link">
               Delete All Favorites
             </Link>
-          )}
-        </div>
-        <div className="wrapper-cards">
-          {!favorites.length ? (
-            <p>your favorites list is empty</p>
-          ) : (
-            favoriteList.map((recipe) => (
-              <CardItem
-                key={recipe._id}
-                recipe={recipe}
-                favorites={favorites}
-                onViewFullRecipe={onViewFullRecipe}
-                favoriteList={favoriteList}
-                onCloseWindow={onCloseWindow}
-                deleteLink={
-                  <Link
-                    to={`/my-favorites/delete/${recipe._id}`}
-                    className="card-link"
-                  >
-                    <i className="bi bi-trash-fill"></i>
-                  </Link>
-                }
-
-                // viewFullRecipeLink={
-                //   <Link
-                //     to={`/my-favorites/full-recipe/${recipe.fullRecipe}`}
-                //     className="card-link"
-                //   >
-                //     View Full Recipe
-                //   </Link>
-                // }
-              />
-            ))
           )}
         </div>
       </div>

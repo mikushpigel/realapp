@@ -1,0 +1,61 @@
+@mixin style-box-image($width, $height) {
+    position: absolute;
+    width: $width;
+    height: $height;
+
+
+}
+
+.favorite__container {
+    .box__image__1 {
+        @include style-box-image(40vw, 90vh);
+        left: 0;
+        top: 0;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .box__image__2 {
+        @include style-box-image(40vw, 90vh);
+        right: 0;
+        top: 0;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    .box__text {
+        @include style-box-image(20vw, 90vh);
+        background-color: #f1c40efa;
+        left: 40vw;
+        top: 0;
+        font-size: 10rem;
+        text-transform: uppercase;
+
+        .text__my {
+
+            position: relative;
+            top: 20%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            text-align: center;
+            width: 100%;
+            // transform: translate(-50%, -50%);
+
+
+        }
+
+    }
+
+    .box__footer {
+        @include style-box-image(100vw, 10vh);
+        left: 0;
+        bottom: 0;
+        background-color: rgba(56, 52, 52, 0.939);
+
+    }
+}
