@@ -32,7 +32,7 @@ export const getRecipeInfoById = async (id) => {
 
 export const getRecipeByNutrients = async (nutrients) => {
   const response = await fetch(
-    `${BASE_URL}/findByNutrients?${nutrients}number=2&apiKey=${API_KEY}`,
+    `${BASE_URL}/findByNutrients?${nutrients}number=10&apiKey=${API_KEY}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export const getRecipeByNutrients = async (nutrients) => {
 
 export const getRandomRecipes = async () => {
   const response = await fetch(
-    `${BASE_URL}/random?number=8&apiKey=${API_KEY}`,
+    `${BASE_URL}/random?number=16&apiKey=${API_KEY}`,
     {
       headers: {
         "Content-Type": "application/json",

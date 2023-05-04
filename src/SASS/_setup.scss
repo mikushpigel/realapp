@@ -4,7 +4,7 @@
 
 
 
-
+$background-color-main: rgba(12, 10, 21, 0.666);
 $fill-color: rgb(242, 239, 245);
 $fill-color-mobile: rgb(237, 125, 237);
 $fill-color-title-scroll: rgb(158, 85, 156);
@@ -52,4 +52,15 @@ $basefont: 'Lato';
     @media (max-width:1400px) {
         @content;
     }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap');
+
+$background-color: linear-gradient(to right, #51334d, #1b1828);
+$back: linear-gradient(to right, #2c3e50, #fd746c);
+$back1: linear-gradient(to right, #536976, #292e49);
+
+@mixin title-font-defenition {
+    font-family: $titlefont;
+    letter-spacing: 0.1rem;
 }

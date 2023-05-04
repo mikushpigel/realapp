@@ -1,9 +1,115 @@
-.footer-app {
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    width: 100vw;
+// .footer-app {
+//     position: fixed;
+//     bottom: 0;
+//     display: flex;
+//     justify-content: center;
+//     text-align: center;
+//     align-items: center;
+//     width: 100vw;
+// }
+
+$background-color-dark: grey;
+
+.footer {
+    background-color: $fill-color-dark;
+    padding: 10rem 0;
+    font-size: 1.4rem;
+
+    &__logo-div {
+        text-align: center;
+        margin-bottom: 8rem;
+
+    }
+
+    &__logo {
+        width: 10rem;
+        height: auto;
+    }
+
+    &__navbar {
+        border-top: 1px solid rgba(255, 228, 196, 0.406);
+        padding-top: 2rem;
+        display: inline-block;
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            color: bisque;
+            background-color: $fill-color-dark;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            transition: all .2s;
+        }
+
+        &:hover,
+        &:active {
+            color: rgb(196, 136, 236);
+            box-shadow: 0 1rem 2rem rgba(50, 27, 27, 0.778);
+            transform: rotate(5deg) scale(1.3);
+        }
+    }
+
+    &__copyright {
+        border-top: 1px solid rgba(255, 228, 196, 0.406);
+        padding-top: 2rem;
+        color: rgb(130, 131, 131);
+        text-align: center;
+
+        li {
+            list-style: none;
+
+        }
+
+
+
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__box {
+        padding: 0 20rem;
+    }
+}
+
+@include mobile {
+    .footer {
+        &__box {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__navbar {
+            display: flex;
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__copyright {
+            padding: 2rem;
+
+
+        }
+    }
 }

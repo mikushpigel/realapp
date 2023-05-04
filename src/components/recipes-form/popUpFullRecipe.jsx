@@ -23,6 +23,8 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
   const [isClicked, setClick] = useState(false);
   const [isInBuyList, setClickToBuyList] = useState(false);
   const [buylist, setBuyList] = useState([]);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     const ingredients = extendedIngredients.map(
@@ -57,16 +59,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
             }
           }
         }
-        toast("Your Shopping List Saved Successfuly!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        setSuccess("Your Shopping List Saved Successfuly!");
       }
     }
     saveTobuyList();
@@ -74,16 +67,7 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
 
   const handleClickBuyList = () => {
     if (!user?.biz) {
-      toast.error("premium account only!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      setError("Premium Account Only!");
       return;
     }
     setClick(true);
@@ -91,85 +75,102 @@ const PopUpFullRecipe = ({ recipe, onCloseWindow, onBuyList }) => {
   };
 
   return (
-    <div key={id} className="divInfo">
-      <h1 className="popup-h1">{title}</h1>
-      <div className="div-description">
-        <p>
-          for {servings} servings - ready in {readyInMinutes} minutes
-        </p>
-      </div>
-      <div className="div-img">
-        <img src={image} className="img-popup" alt={title} />
-      </div>
-      <div className="wrapper-ingredient">
-        <h1 className="popup-h1">Ingredients</h1>
-
-        <div className="ingrediend-div">
-          {extendedIngredients.map(
-            ({ name, amount, unit, id, image, original }) => (
-              <div
-                key={original}
-                className="card box-ingredient"
-                style={{ width: "8rem" }}
-              >
-                {Number.isInteger(amount) ? amount : amount.toFixed(1)} {unit}{" "}
-                <img
-                  src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
-                  className="img-ingredient"
-                  alt={name}
-                />
-                <p>{name}</p>
-              </div>
-            )
-          )}
+    <div key={id} className="popup">
+      <div className="popup__content">
+        <div className="title-img-div">
+          <h1>{title}</h1>
+          <div className="div-description">
+            <p>
+              for {servings} servings - ready in {readyInMinutes} minutes
+            </p>
+          </div>
+          <div className="div-img">
+            <img src={image} className="img-popup" alt={title} />
+          </div>
         </div>
-        <div>
+        <div className="wrapper-ingredient">
+          <h1>Ingredients</h1>
+
+          <div className="ingrediend-div">
+            {extendedIngredients.map(
+              ({ name, amount, unit, id, image, original }) => (
+                <div
+                  key={original}
+                  className="card box-ingredient"
+                  style={{ width: "8rem" }}
+                >
+                  {Number.isInteger(amount) ? amount : amount.toFixed(1)} {unit}{" "}
+                  <img
+                    src={`https://spoonacular.com/cdn/ingredients_100x100/${image}`}
+                    className="img-ingredient"
+                    alt={name}
+                  />
+                  <p>{name}</p>
+                </div>
+              )
+            )}
+          </div>
+          <div>
+            {error || success ? (
+              <>
+                {error && (
+                  <span className="error-span text-danger">{error}</span>
+                )}
+                {success && <span className="span-success">{success}</span>}
+              </>
+            ) : (
+              <button
+                className="btn-shoping-list"
+                onClick={handleClickBuyList}
+                title={isInBuyList ? "already added" : ""}
+                disabled={isInBuyList}
+                style={{ backgroundColor: isInBuyList ? "grey" : "" }}
+              >
+                <i className="bi bi-card-list"></i>&nbsp;&nbsp;&nbsp;Add To
+                Shopping List
+              </button>
+            )}
+          </div>
+        </div>
+
+        <div className="instruction-step">
+          <h1>Method</h1>
+          {instructions &&
+            instructions.steps.map(({ number, step }, index) => (
+              <li key={index}>
+                {number}. {step}
+              </li>
+            ))}
+          <div className="link-web">
+            <Link className="details-link" to={link} target="_blank">
+              for more details
+            </Link>
+          </div>
+        </div>
+
+        <div className="nutrients-wrapper">
+          <h1>Nutritional Information</h1>
+          {nutrients.map(({ name, amount, unit }, index) => (
+            <>
+              <div key={index} className="nutrients-div">
+                <p>
+                  <span style={{ fontWeight: "bolder" }}>{name}: </span>
+                  {amount}
+                  {unit}
+                </p>
+              </div>
+            </>
+          ))}
+        </div>
+        <div className="btn-div">
           <button
-            className="btn-shoping-list"
-            onClick={handleClickBuyList}
-            title={isInBuyList ? "already added" : ""}
-            disabled={isInBuyList}
-            style={{ backgroundColor: isInBuyList ? "grey" : "" }}
+            onClick={() => onCloseWindow(id)}
+            className="close-full-recipe"
           >
-            <i className="bi bi-card-list"></i>&nbsp;&nbsp;&nbsp;Add To Shopping
-            List
+            <i className="bi bi-x-circle"></i>
           </button>
         </div>
       </div>
-
-      <div className="instruction-step">
-        <h1 className="popup-h1">Method</h1>
-        {instructions &&
-          instructions.steps.map(({ number, step }, index) => (
-            <li key={index}>
-              {number}. {step}
-            </li>
-          ))}
-        <div className="link-web">
-          <Link className="details-link" to={link} target="_blank">
-            for more details
-          </Link>
-        </div>
-      </div>
-
-      <div className="nutrients-wrapper">
-        <h1 className="popup-h1">Nutritional Information</h1>
-        {nutrients.map(({ name, amount, unit }, index) => (
-          <>
-            <div key={index} className="nutrients-div">
-              <p>
-                <span style={{ fontWeight: "bolder" }}>{name}: </span>
-                {amount}
-                {unit}
-              </p>
-            </div>
-          </>
-        ))}
-      </div>
-
-      <button onClick={() => onCloseWindow(id)} className="close-full-recipe">
-        <i className="bi bi-x-circle"></i>
-      </button>
     </div>
   );
 };

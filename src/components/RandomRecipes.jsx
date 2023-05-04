@@ -5,6 +5,7 @@ import { cheakRecipeList } from "../utils/checkRecipeList";
 import BlessUser from "./common/blessUser";
 import PageHeader from "./common/PageHeader";
 import CardItem from "./recipes-form/CardItem";
+import TopButton from "./common/TopButton";
 
 const RandomRecipes = () => {
   const [randomRecipesList, setRandomRecipes] = useState([]);
@@ -75,20 +76,18 @@ const RandomRecipes = () => {
     <>
       <div className="space-div" id="homeid"></div>
       <PageHeader title="Show me the Yummy " />
-      <div className="wrapper">
-        <div className="card-container">
-          {" "}
-          {randomRecipesList.map((recipe) => (
-            <CardItem
-              key={recipe.id}
-              recipe={recipe}
-              favorites={myFavs}
-              onFavorite={onFavorite}
-              onCloseWindow={onCloseWindow}
-              onViewFullRecipe={onViewFullRecipe}
-            />
-          ))}
-        </div>
+      <div className="random-rotate__cards-container">
+        {randomRecipesList.map((recipe) => (
+          <CardItem
+            key={recipe.id}
+            recipe={recipe}
+            favorites={myFavs}
+            onFavorite={onFavorite}
+            onCloseWindow={onCloseWindow}
+            onViewFullRecipe={onViewFullRecipe}
+          />
+        ))}
+        <TopButton />
       </div>
     </>
   );

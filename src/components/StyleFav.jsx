@@ -10,7 +10,7 @@ const StyleFav = () => {
           className="image__1"
         />
       </div>
-      <div className=" popup-h1 box__text">
+      <div className="box__text">
         <span className="text__my">
           m y <br />
           f a <br />
@@ -25,7 +25,7 @@ const StyleFav = () => {
           alt=""
         />
       </div>
-      <div className="box__footer"></div>
+      <div className="fav__footer"></div>
     </div>
   );
 };

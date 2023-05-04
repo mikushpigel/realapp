@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UseMyFav from "../../hooks/useMyFav";
 import { useRecipeByNutrient } from "../../hooks/useRecipeByNutrient";
 import { cheakRecipeList } from "../../utils/checkRecipeList";
+import TopButton from "../common/TopButton";
 import CardItem from "../recipes-form/CardItem";
 
 const RecipesListByNutrient = ({ nutrientsTypes }) => {
@@ -85,7 +86,7 @@ const RecipesListByNutrient = ({ nutrientsTypes }) => {
   }
   return (
     <>
-      <div className="wrapper-cards">
+      <div className="random-rotate__cards-container">
         {matchingRecipes.map((recipe) => (
           <CardItem
             key={recipe.id}
@@ -96,6 +97,7 @@ const RecipesListByNutrient = ({ nutrientsTypes }) => {
             onFavorite={onFavorite}
           />
         ))}
+        <TopButton />
       </div>
     </>
   );

@@ -50,27 +50,19 @@ const DeskNavbar = () => {
           <li>
             <NavLink
               className={isScroll > 0 ? "a-link" : "link-item"}
-              to="search"
+              to="search-by"
             >
-              | SEARCH |
+              | SEARCH BY |
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              className={isScroll > 0 ? "a-link" : "link-item"}
-              to="search-by-nutrients"
-            >
-              | SEARCH BY NUTRIENTS |
-            </NavLink>
-          </li>
-          <li>
+          {/* <li>
             <NavLink
               className={isScroll > 0 ? "a-link" : "link-item"}
               to="quick-and-easy"
             >
               | QUICK & EASY |
             </NavLink>
-          </li>
+          </li> */}
           {user?.biz && (
             <li>
               <NavLink
@@ -87,7 +79,7 @@ const DeskNavbar = () => {
                 className={isScroll > 0 ? "a-link" : "link-item"}
                 to="my-buylist"
               >
-                | MY BUY LIST |
+                | MY SHOPPING LIST |
               </NavLink>
             </li>
           )}

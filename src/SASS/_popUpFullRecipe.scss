@@ -1,21 +1,56 @@
-.divInfo {
-    width: 100%;
-    height: max-content;
-    background-color: rgb(126, 69, 241);
-    padding: 100px 10px;
+@mixin toCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin popup-titles($color) {
+    font-family: $titlefont;
+    color: $color;
+    font-size: 4rem;
+}
+
+@mixin basic-flex() {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1.5rem;
+    text-align: center;
+}
+
+$purple-light: rgb(168, 146, 241);
+$purple-dark:rgba(88, 45, 102, 0.816);
+
+
+.popup {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.835);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+
+
+    &__content {
+        @include toCenter();
+        width: 75%;
+        height: 75%;
+        box-shadow: 0 2rem 4rem rgba(81, 74, 133, 0.937);
+        background: linear-gradient(to left, $purple-light, #f8cdda);
+        border-radius: .8rem;
+        overflow: auto;
+        transition: all 3s;
+    }
 }
 
 .star {
     border: 0;
     font-size: 4rem;
-    background-color: white;
+    background: #f8f3e8;
 }
-
 
 .div-img {
     width: 50rem;
@@ -25,22 +60,15 @@
 
 .img-popup {
     width: 100%;
-
     border-radius: 50%;
+    box-shadow: 0 0 5px bisque;
 }
 
-.nutrients-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
 
-}
 
 .nutrients-wrapper h1 {
     margin-bottom: 2.2rem;
+    @include popup-titles($purple-dark)
 }
 
 .nutrients-div {
@@ -64,16 +92,25 @@
     font-size: 2rem;
 }
 
+.nutrients-wrapper {
+    @include basic-flex();
+    font-size: 1.5rem;
+    padding: 2rem;
+
+}
+
 .instruction-step {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    @include basic-flex();
     gap: 1.5rem;
-    width: 50%;
+    width: 70%;
+    margin: 0 auto;
     font-size: 1.6rem;
     font-family: "Lato";
+    padding: 5rem;
+
+    h1 {
+        @include popup-titles($purple-dark)
+    }
 
 }
 
@@ -83,19 +120,19 @@
 }
 
 .img-ingredient {
-    width: 7rem;
+    width: 100%;
 }
 
 .ingrediend-div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 2rem;
     font-size: 1.3rem;
     font-weight: bolder;
     text-align: center;
     font-family: $basefont;
-    width: 90%;
+    width: 60%;
 }
 
 .extandIng-div {
@@ -111,35 +148,44 @@
     border: 0 !important;
 }
 
+.title-img-div {
+    clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%);
+    background: linear-gradient(to bottom, $purple-light, #f8cdda);
+    border-bottom: 5px dotted bisque;
+    @include basic-flex();
+    padding: 5rem;
+
+    h1 {
+        @include popup-titles(black);
+    }
+
+}
+
 .wrapper-ingredient {
     background-color: white;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
     width: 100%;
     padding: 7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include basic-flex();
     gap: 3.5rem;
+    border-bottom: 5px dotted $purple-dark;
+
+    h1 {
+        @include popup-titles($purple-dark)
+    }
 
 }
 
-.wrapper-ingredient h1 {
-    color: rgb(83, 11, 208);
-    font-family: $titlefont;
-    font-size: 4rem;
-}
 
-.popup-h1 {
-    font-family: $titlefont;
-    font-size: 4rem;
-}
+// .popup-h1 {
+//     @include popup-titles($purple-light)
+// }
 
 .btn-shoping-list {
-    border: .3rem solid rgb(229, 229, 229);
-    background-color: rgb(50, 25, 105);
-    box-shadow: 0 0 .5rem whitesmoke;
+    background-color: $purple-dark;
+    box-shadow: .4rem .2rem .5rem rgb(15, 9, 9);
     padding: 1.3rem;
-    border-radius: 1rem !important;
+    border-radius: 1rem;
     color: aliceblue;
     font-family: $basefont;
     font-size: 1.6rem;
@@ -150,6 +196,24 @@
     color: aliceblue;
 }
 
+.btn-div {
+    @include basic-flex();
+    padding: 3rem;
+}
+
+.error-span {
+    background-color: black;
+    padding: 3rem;
+    border-radius: .8rem;
+}
+
+.span-success {
+    background-color: greenyellow;
+    padding: 3rem;
+    border-radius: .8rem;
+    font-family: $basefont;
+    font-size: 1.6rem;
+}
 
 @include mobile {
     .div-img {
@@ -158,6 +222,12 @@
 
     .ingrediend-div {
         font-size: 1.8rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+
     }
 
     .btn-shoping-list {
@@ -180,5 +250,39 @@
 
     .bi-x-circle {
         font-size: 3rem;
+    }
+
+    .popup__content {
+        width: 90%;
+        height: 90%;
+
+
+
+        box-shadow: 0 2rem 4rem rgba(81, 74, 133, 0.937);
+        background: linear-gradient(to left, $purple-light, #f8cdda);
+        border-radius: .8rem;
+        overflow: auto;
+        transition: all 3s;
+
+    }
+
+    .title-img-div {
+        clip-path: none;
+    }
+
+    .wrapper-ingredient {
+        clip-path: none;
+    }
+
+    .div-description {
+        width: 90%;
+
+        p {
+            font-size: 2.5rem;
+        }
+    }
+
+    .instruction-step {
+        width: 100%;
     }
 }

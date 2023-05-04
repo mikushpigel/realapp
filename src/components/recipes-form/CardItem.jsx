@@ -5,7 +5,6 @@ import { useAuth } from "../../context/auth.context";
 import useRecipeInfoById from "../../hooks/useRecipeInfoById";
 import favServics from "../../services/favServices";
 import recipesService from "../../services/recipeApiServices";
-import { getUserDetails } from "../../services/userService";
 import PopUpFullRecipe from "./popUpFullRecipe";
 
 const CardItem = ({
@@ -38,6 +37,11 @@ const CardItem = ({
   const [favorite, setFavorite] = useState(false);
   const [isClicked, setClick] = useState(false);
   const [ingredientsList, setIngredients] = useState(null);
+
+  function randomRotate() {
+    const deg = Math.random() * (5 - -5) + -5;
+    return "rotate(" + deg + "deg)";
+  }
 
   useEffect(() => {
     const exist = favorites.find((fav) => fav.id === id);
@@ -124,7 +128,7 @@ const CardItem = ({
   }
 
   return (
-    <div className="card card-recipe">
+    <div className="card-recipe" style={{ transform: randomRotate() }}>
       <img src={image} className="card-img-top" alt={title} />
       <div className="card-body">
         <div>
@@ -152,9 +156,9 @@ const CardItem = ({
         {count && (
           <div className="wrapper-missing-ingredient">
             <div>
-              <h4>{count} Missing ingredients</h4>
+              <h3>{count} Missing ingredients</h3>
             </div>
-            <div className="missing-ingredients-div">
+            <div className={count <= 5 && "missing-ingredients-div"}>
               {missedIngredients.map(
                 ({ amount, unit, id, name, image }, index) => {
                   return (

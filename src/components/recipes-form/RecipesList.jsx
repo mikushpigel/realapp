@@ -3,6 +3,7 @@ import UseMyFav from "../../hooks/useMyFav";
 import useRecipeByIngredient from "../../hooks/useRecipeByIngredient";
 import { cheakRecipeList } from "../../utils/checkRecipeList.js";
 import CardItem from "./CardItem";
+import TopButton from "../common/TopButton";
 
 const RecipesList = ({ prodList }) => {
   const [matchingRecipes, setMetchingRecipe] = useState([]);
@@ -72,7 +73,7 @@ const RecipesList = ({ prodList }) => {
   }
   return (
     <>
-      <div className="wrapper-cards">
+      <div className="random-rotate__cards-container">
         {matchingRecipes
           .sort((a, b) =>
             a.missedIngredientCount > b.missedIngredientCount ? 1 : -1
@@ -87,6 +88,7 @@ const RecipesList = ({ prodList }) => {
               onFavorite={onFavorite}
             />
           ))}
+        <TopButton />
       </div>
     </>
   );

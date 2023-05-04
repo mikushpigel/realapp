@@ -1,42 +1,111 @@
 $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap");
 
-.wrapper-cards {
+.searchby__container {
+    height: 70vh;
+    width: auto;
+    background-color: $background-color-main;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+
+    div {
+
+        padding: 12rem;
+        background-color: #100b17dd;
+        height: 50%;
+        border-radius: 1.2rem;
+        font-size: 2.8rem;
+        font-family: "Kalam";
+        display: flex;
+        align-items: center;
+
+    }
+}
+
+.random-rotate__cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 0rem;
+    padding: 1rem;
+    background-color: #ccccccd7;
+}
+
+.card-recipe {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    gap: 3rem;
+    align-items: center;
+    padding: 1rem 1rem 2rem;
+    background: #f8f3e8;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    font-family: "Kalam";
+
+    img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 600/300;
+    }
+
+    &:hover {
+        border-right: 5px dotted rgb(195, 110, 195);
+        border-bottom: 5px dotted purple;
+        z-index: 100;
+    }
+}
+
+.card-title {
+
+    margin-top: 1rem;
+    font-weight: normal;
+    font-size: 2.1rem;
+    color: #3d0b50;
+
 
 }
+
+
+
 
 .missing-ingredients-div {
     display: flex;
     justify-content: center;
     font-size: 1.2rem;
+    width: 90%;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: .9rem;
 
 }
 
+.missedIngredientDiv {}
 
-.card-recipe {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30rem;
-    // height: 69rem !important;
-    overflow: auto;
-    background: $background-color !important;
-    border-radius: 1rem !important;
-    // border: 5px solid whitesmoke !important;
-    box-shadow: 0 0 1rem whitesmoke;
+.img-ingredient {
+    width: 100%;
 }
 
-.card-title {
-    font-family: $titlefont;
-    font-size: 2.5rem;
-    letter-spacing: .1rem;
-}
+// .card-recipe {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     width: 30rem;
+//     // height: 69rem !important;
+//     overflow: auto;
+//     background: $background-color !important;
+//     border-radius: 1rem !important;
+//     // border: 5px solid whitesmoke !important;
+//     box-shadow: 0 0 1rem whitesmoke;
+// }
+
+// .card-title {
+//     font-family: $titlefont;
+//     font-size: 2.5rem;
+//     letter-spacing: .1rem;
+// }
 
 .card-body {
     text-align: center;
@@ -87,29 +156,14 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     border-radius: .8rem;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-}
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-}
-
-
 .input-search-recipe {
     border: .3rem solid purple;
     border-radius: .8rem;
     padding: .7rem;
-    width: 50vw;
-    font-size: 1.8rem;
+    width: 30vw;
+    font-size: 2rem;
     margin-bottom: .8rem;
+    font-family: "Kalam";
 }
 
 .wrapper-search-reacipe {
@@ -118,6 +172,18 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     justify-content: center;
     align-items: center;
     margin-bottom: 3rem;
+    font-family: "Kalam";
+    background-color: $background-color-main;
+    width: 50vw;
+    border-radius: .9rem;
+    margin: 0 auto;
+    padding: 4rem;
+
+    h1 {
+        font-weight: bolder;
+        font-size: 3rem;
+        color: aliceblue;
+    }
 }
 
 .nutrients-types {
@@ -183,6 +249,12 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     font-size: 1.7rem;
 }
 
+.Toastify__toast--error {
+    border: 1px solid #994242;
+    border-radius: 50px !important;
+}
+
+
 .bi-star-fill {
     font-size: 4rem !important;
 }
@@ -208,9 +280,7 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     letter-spacing: .2rem;
 }
 
-.img-ingredient {
-    width: 6rem !important;
-}
+
 
 .text-danger {
     font-size: 1.8rem;
@@ -230,6 +300,21 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
 @include mobile {
+
+    .random-rotate__cards-container {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 2.5rem;
+        margin: 0 auto;
+        // position: absolute;
+        // left: 0;
+        width: 100%;
+
+    }
+
     .nutrients-types {
         width: 40rem;
     }
@@ -242,24 +327,14 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         width: 40rem;
     }
 
-    .wrapper-cards {
 
-        flex-wrap: nowrap;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
     .card-recipe {
-        width: 100vw;
-        height: max-content !important;
+        width: 100%;
         border-bottom: 3px dotted purple !important;
+        transform: none !important;
     }
 
-    // .card-recipe {
-    //     left: 12rem;
-    // }
 
     .input-search-recipe {
         width: 90vw;
@@ -319,4 +394,22 @@ $background-color: linear-gradient(to right, #0f2027, #203a43, #2c5364);
         font-size: 3rem !important;
     }
 
+    .logo-img {
+        width: 30rem;
+    }
+
+    .searchby__container {
+        height: 40vh;
+
+        div {
+
+            padding: 2rem;
+            height: 30%;
+            font-size: 2rem;
+        }
+    }
+
+    .wrapper-search-reacipe {
+        width: 100vw;
+    }
 }

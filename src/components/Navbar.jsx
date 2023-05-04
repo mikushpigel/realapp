@@ -28,20 +28,11 @@ const NavBar = ({ onActive }) => {
         </NavLink>
       </li>
       <li className="navbar-li">
-        <NavLink onClick={handleClick} className={"link-item"} to="search">
-          | SEARCH |
+        <NavLink onClick={handleClick} className={"link-item"} to="search-by">
+          | SEARCH BY |
         </NavLink>
       </li>
-      <li className="navbar-li">
-        <NavLink
-          onClick={handleClick}
-          className={"link-item"}
-          to="search-by-nutrients"
-        >
-          | SEARCH BY NUTRIENTS |
-        </NavLink>
-      </li>
-      <li className="navbar-li">
+      {/* <li className="navbar-li">
         <NavLink
           onClick={handleClick}
           className={"link-item"}
@@ -49,7 +40,7 @@ const NavBar = ({ onActive }) => {
         >
           | QUICK & EASY |
         </NavLink>
-      </li>
+      </li> */}
       {user?.biz && (
         <>
           <li className="navbar-li">
@@ -67,7 +58,7 @@ const NavBar = ({ onActive }) => {
               className={"link-item"}
               to="my-buylist"
             >
-              | MY BUY LIST |
+              | MY SHOPPING LIST |
             </NavLink>
           </li>
         </>

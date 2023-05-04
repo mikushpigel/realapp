@@ -26,7 +26,7 @@ const ShopingListForm = ({ onSumbit }) => {
     }
   };
   return (
-    <div className="input-group">
+    <div className="buylist_container">
       <div className="task-box">
         <span className="input-group-text" id="basic-addon3">
           I Need To Buy

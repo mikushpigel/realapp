@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UseMyFav from "../hooks/useMyFav";
+import ScrollToTop from "../services/scrollToTop";
 import PageHeader from "./common/PageHeader";
 import CardItem from "./recipes-form/CardItem";
 import ImageRecipeCard from "./recipes-form/ImageRecipeCard";
@@ -49,7 +50,7 @@ const MyFavorites = () => {
 
       <div className="wrapper-cards-favorites">
         {!favorites.length ? (
-          <p>your favorites list is empty</p>
+          <h1 className="empty-h1">your favorites list is empty</h1>
         ) : (
           favoriteList.map((recipe) => (
             <ImageRecipeCard

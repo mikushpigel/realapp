@@ -76,13 +76,13 @@ const SortShopingList = ({
           className="sort-todo"
           value={select}
         >
-          <option value="all">All task</option>
+          <option value="all">All</option>
           <option value="iscomplete">Completed tasks</option>
         </select>
         <h2>
           {todosComplete.length} / {todosAmount}
         </h2>
-        <button onClick={handleClearTaskComplete} className="btn">
+        <button onClick={handleClearTaskComplete} className="btnDelete">
           clear All Done
         </button>
       </div>

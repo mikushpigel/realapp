@@ -28,6 +28,9 @@ import DeleteProd from "./components/buy-list/DeleteProd";
 import DeleteAllBuyList from "./components/buy-list/DeleteAllBuyList";
 import Nutrients from "./components/recipeByNutrients/Nutrients";
 import StyleFav from "./components/StyleFav";
+import ScrollToTop from "./services/scrollToTop";
+import PopUp from "./components/common/popUp";
+import SearchBy from "./components/search-by";
 
 function App() {
   return (
@@ -41,11 +44,29 @@ function App() {
 
       <main>
         <Routes>
+          {ScrollToTop()}
           <Route path="index" element={<Index />} />
           <Route path="/" element={<Index />} />
           <Route path="about" element={<AboutUs />} />
-          <Route path="search" element={<Products />} />
-          <Route path="search-by-nutrients" element={<Nutrients />} />
+          <Route path="search-by" element={<SearchBy />} />
+
+          <Route
+            path="search"
+            element={
+              <ProtectedRoute>
+                <Products />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="search-by-nutrients"
+            element={
+              <ProtectedRoute>
+                <Nutrients />
+              </ProtectedRoute>
+            }
+          />
           {/* <Route path="search-form" element={<SearchForm />} /> */}
           <Route path="quick-and-easy" element={<QuickandEasy />} />
           {/* <Route
@@ -104,13 +125,11 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
           <Route path="sign-up-premium" element={<SignUpPremium />} />
           <Route path="sign-out" element={<SignOut redirect={"/"} />} />
           <Route path="password-recovery" element={<PasswordRecovery />} />
-          <Route path="style-fav" element={<StyleFav />} />
         </Routes>
       </main>
       <footer>

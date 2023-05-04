@@ -55,18 +55,15 @@ const ListItem = ({
         checked={isComplete}
       />
       <span>
-        {amount} {unit}
+        {amount} {unit} {prod}
       </span>
-      <span className="todo-item-task">{prod}</span>
-      {/* <button onClick={() => onRemove(id)} className="btn">
-        <i className="bi bi-trash3-fill"></i>
-      </button> */}
+
       <Link to={`/my-shopingList/delete/${_id}`} className="btn">
-        <i className="bi bi-trash3-fill"></i>
+        <i className="bi bi-trash3-fill trashbtn"></i>
       </Link>
-      <button onClick={() => onEdit(_id)} className="btn">
-        <i className="bi bi-pen"></i>
-      </button>
+      <li onClick={() => onEdit(_id)} className="btn">
+        <i className="bi bi-pen editbtn"></i>
+      </li>
     </li>
   );
 };
